@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Psy\Command\DumpCommand;
 
 class HomeController extends Controller
 {
@@ -37,9 +38,13 @@ class HomeController extends Controller
     public function store(Request $req){
 
         //insert into DB or model...
-        echo $req->username;
+        //echo $req->username;
 
-        //return view('home.list')->with('list', $userlist);
+        $alluser = $this->getUserlist();
+        array_push($alluser,['id'=> '4', 'name'=> $req->username,'email'=>$req->email, 'password'=>$req->password]);
+
+        return view('home.list')->with('list',$alluser);
+        
        // return redirect('/home/userlist');
 
     }
@@ -62,9 +67,17 @@ class HomeController extends Controller
 
     public function update($id, Request $req){
 
-        //$user = ['id'=> $id, 'name'=> $req->name, 'email'->$req->email, 'password'=>$req->password];
+        //$user = ['id'=> $id, 'name'=> $req->name,'email'=>$req->email, 'password'=>$req->password];
         //updating DB or model
-        return redirect('/home/userlist');
+        $alluser = $this->getUserlist();
+        $value = array();
+        foreach($alluser as $u){
+            if($u['id'] != $id ){
+                array_push($value,$u);
+            }
+        }
+        array_push($value,['id'=> $id, 'name'=> $req->username,'email'=>$req->email, 'password'=>$req->password]);
+        return view('home.list')->with('list',$value);
     }
 
     public function userlist(){
@@ -73,6 +86,20 @@ class HomeController extends Controller
 
         return view('home.list')->with('list', $userlist);
     }
+
+    public function delete($id){
+        $alluser = $this->getUserlist();
+        
+        $value = array();
+        foreach($alluser as $u){
+            if($u['id'] != $id ){
+                array_push($value,$u);
+            }
+        }
+        
+        return view('home.list')->with('list',$value);
+    }
+
 
     public function getUserlist (){
 
