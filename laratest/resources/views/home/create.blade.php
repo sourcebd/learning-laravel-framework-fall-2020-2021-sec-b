@@ -10,6 +10,8 @@
     <h1>Create New user</h1>
 
     <form method="post">
+	<!-- @csrf -->
+	{{csrf_field()}}
 		<fieldset>
 			<legend>Add</legend>
 			<table>

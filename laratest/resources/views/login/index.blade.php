@@ -7,7 +7,8 @@
 	<h1>Login Page</h1>
 	
 	<form method="post">
-		@csrf
+		<!-- @csrf -->
+		{{csrf_field()}}
 		<fieldset>
 			<legend>Login</legend>
 			<table>
