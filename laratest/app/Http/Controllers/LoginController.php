@@ -13,10 +13,18 @@ class LoginController extends Controller
     public function verify(Request $req){
 
         if($req->username == "" || $req->password == ""){
-           $req->session()->flash('msg', 'null username or password...');
+           $req->session()->flash('msg', 'Null username or password...');
            return redirect('/login');
 
-        }elseif($req->username == $req->password){
+        }
+        elseif($req->username == "Nafi" && $req->password == "1999"){
+
+            $req->session()->put('username', $req->username);
+            $req->session()->put('type', 'Admin');
+            return redirect('/home');
+        }
+
+        elseif($req->username == $req->password){
             //$req->session()->put('password', $req->password);
             //$req->session()->get('name');
             //$req->session()->forget('name');
@@ -32,10 +40,11 @@ class LoginController extends Controller
             //$req->session()->pull('name');
 
             $req->session()->put('username', $req->username);
+            $req->session()->put('type','User');
             return redirect('/home');
         }else{
 
-            //$req->session()->flash('msg', 'Invalid username or password...');
+            $req->session()->flash('msg', 'Invalid username or password...');
             return redirect('/login');
         }
     }

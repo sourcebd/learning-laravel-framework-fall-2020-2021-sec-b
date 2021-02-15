@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class SessionVerify
+class AdminCheck
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,14 @@ class SessionVerify
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->has('username'))
+        if($request->session()->get('username') == "Nafi")
         {
             return $next($request);
         }
         else
         {
-            $request->session()->flash('msg','Invalid req ... Login first!');
-            return redirect('/login');
+            $request->session()->flash('msg','Invalid req ... You do not have privilege to be an Admin!');
+            return redirect('/home');
         }
-        
     }
 }

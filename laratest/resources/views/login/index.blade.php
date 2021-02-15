@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Login Page</h1>
-	
+
 	<form method="post">
 		<!-- @csrf -->
 		{{csrf_field()}}
@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" name="submit" value="Submit"></td>
-					<td></td>
+					<td><Button><a style="text-decoration: none" href="/">Back</a></Button></td>
 				</tr>
 			</table>
 		</fieldset>

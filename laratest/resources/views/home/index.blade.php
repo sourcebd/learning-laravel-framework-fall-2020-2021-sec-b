@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Welcome home! {{ session('username') }} </h1>
+    <h1>Hey {{ session('type') }}!</h1>
     <a href="/home/create">Create user</a> |
     <a href="/home/userlist">View user list</a> |
     <a href="/logout">logout</a>
