@@ -14,7 +14,7 @@
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/E-Pay', function () {
     //return view('welcome');
     echo "<h1 style='color:Red'>Welcome to E-Pay!</h1>";
     echo "<a href='/login'>Login</a>";
