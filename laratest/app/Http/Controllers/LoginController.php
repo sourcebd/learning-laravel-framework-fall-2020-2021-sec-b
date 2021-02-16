@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -11,6 +12,10 @@ class LoginController extends Controller
     }
 
     public function verify(Request $req){
+
+        $user = User::where('password', $req->password) //Select Query
+        ->where('username', $req->username)
+        ->get();
 
         if($req->username == "" || $req->password == ""){
            $req->session()->flash('msg', 'Null username or password...');
@@ -24,7 +29,7 @@ class LoginController extends Controller
             return redirect('/home');
         }
 
-        elseif($req->username == $req->password){
+        elseif(count($user)>0){
             //$req->session()->put('password', $req->password);
             //$req->session()->get('name');
             //$req->session()->forget('name');
