@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" name="submit" value="Submit"></td>
-					<td><Button><a style="text-decoration: none" href="/">Back</a></Button></td>
+					<td><Button><a style="text-decoration: none" href="/E-Pay">Back</a></Button></td>
 				</tr>
 			</table>
 		</fieldset>
