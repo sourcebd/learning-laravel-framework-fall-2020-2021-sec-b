@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Psy\Command\DumpCommand;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -12,22 +13,14 @@ class HomeController extends Controller
         $name = "alamin";
         $id = "123";
 
-        //return view('home.index', ['name'=> 'xyz', 'id'=>12]);
-
-        // return view('home.index')
-        //         ->with('name', 'alamin')
-        //         ->with('id', '12');
-
-        // return view('home.index')
-        //         ->withName($name)
-        //         ->withId($id);
-
-        /* if($req->session()->has('username')){ */
             return view('home.index', compact('id', 'name'));
-       /*  }else{
-            $req->session()->flash('msg', 'invalid request...login first!');
-            return redirect('/login');
-        } */
+
+    }
+
+    public function show($id){
+
+        $user = User::find($id);
+        return view('home.details')->with('user', $user);
 
     }
 
@@ -38,75 +31,68 @@ class HomeController extends Controller
     public function store(Request $req){
 
         //insert into DB or model...
-        //echo $req->username;
 
-        $alluser = $this->getUserlist();
-        array_push($alluser,['id'=> '4', 'name'=> $req->username,'email'=>$req->email, 'password'=>$req->password]);
+        echo $req->username;
 
-        return view('home.list')->with('list',$alluser);
-        
-       // return redirect('/home/userlist');
+        $user = new User();
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->dept = $req->dept;
+        $user->cgpa = $req->cgpa;
+        $user->type = $req->type;
 
+        $user-> save();
+
+        return redirect('/home/userlist');
     }
 
     public function edit($id){
-        $userlist= $this->getUserlist();
-        $user = [];
-
-        foreach($userlist as $u){
-            if($u['id'] == $id ){
-                $user = $u;
-                break;
-            }
-        }
-
-        //$user =  ['id'=>2, 'username'=>'abc', 'email'=> 'abc@aiub.edu', 'password'=>'456'];
+      
+        $user = User::find($id);
         return view('home.edit')->with('user', $user);
     }
 
 
     public function update($id, Request $req){
 
-        //$user = ['id'=> $id, 'name'=> $req->name,'email'=>$req->email, 'password'=>$req->password];
         //updating DB or model
-        $alluser = $this->getUserlist();
-        $value = array();
-        foreach($alluser as $u){
-            if($u['id'] != $id ){
-                array_push($value,$u);
-            }
-        }
-        array_push($value,['id'=> $id, 'name'=> $req->username,'email'=>$req->email, 'password'=>$req->password]);
-        return view('home.list')->with('list',$value);
+
+        $user = User::find($id);
+
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->dept = $req->dept;
+        $user->cgpa = $req->cgpa;
+        $user->type = $req->type;
+
+        $user-> save();
+
+        return redirect('/home/userlist');
     }
 
     public function userlist(){
         // db model userlist
-        $userlist = $this->getUserlist();
 
+        $userlist = User::all();
         return view('home.list')->with('list', $userlist);
     }
 
     public function delete($id){
-        $alluser = $this->getUserlist();
-        
-        $value = array();
-        foreach($alluser as $u){
-            if($u['id'] != $id ){
-                array_push($value,$u);
-            }
-        }
-        
-        return view('home.list')->with('list',$value);
+
+        $user = User::find($id);
+        return view('home.delete')->with('user', $user);
     }
 
+    public function destroy($id){
 
-    public function getUserlist (){
-
-        return [
-                ['id'=>1, 'name'=>'alamin', 'email'=> 'alamin@aiub.edu', 'password'=>'123'],
-                ['id'=>2, 'name'=>'abc', 'email'=> 'abc@aiub.edu', 'password'=>'456'],
-                ['id'=>3, 'name'=>'xyz', 'email'=> 'xyz@aiub.edu', 'password'=>'789']
-            ];
+        if(User::destroy($id)){
+            return redirect('/home/userlist');
+        }else{
+            return redirect('/home/delete/'.$id);
+        }
     }
 }

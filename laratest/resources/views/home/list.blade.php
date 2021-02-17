@@ -8,30 +8,32 @@
 </head>
 <body>
 
-    <h1>User list</h1>
+    <h1>User List</h1>
     <a href="/home">Back</a> |
-    <a href="/logout">logout</a>
+    <a href="/logout">Logout</a>
+    <br><br>
 
-    <br>
-
-    <table border="1">
+    <table border="1" style="text-align:center">
         <tr>
             <td>ID</td>
-            <td>NAME</td>
-            <td>EMAIL</td>
+            <td>USERNAME</td>
             <td>PASSWORD</td>
-            <td>Action</td>
+            <td>NAME</td>
+            <td>TYPE</td>
+            <td>ACTION</td>
         </tr>
 
         @for($i=0; $i < count($list); $i++)
         <tr>
-            <td>{{ $list[$i]['id'] }}</td>
-            <td>{{ $list[$i]['name'] }}</td>
-            <td>{{ $list[$i]['email'] }}</td>
+            <td>{{ $list[$i]['user_id'] }}</td>
+            <td>{{ $list[$i]['username'] }}</td>
             <td>{{ $list[$i]['password'] }}</td>
+            <td>{{ $list[$i]['name'] }}</td>
+            <td>{{ $list[$i]['type'] }}</td>
             <td>
-                <a href="/home/edit/{{ $list[$i]['id'] }}">Edit</a> |
-                <a href="/home/delete/{{ $list[$i]['id'] }}">Delete</a>
+                <a href="/home/edit/{{ $list[$i]['user_id'] }}">Edit</a> |
+                <a href="/home/delete/{{ $list[$i]['user_id'] }}">Delete</a> |
+                <a href="/home/details/{{ $list[$i]['user_id'] }}">Details</a>
             </td>
         </tr>
         @endfor

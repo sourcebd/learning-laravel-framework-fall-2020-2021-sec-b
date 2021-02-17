@@ -7,25 +7,48 @@
     <title>Create User</title>
 </head>
 <body>
-    <h1>Create New user</h1>
+    <h1>Create New User</h1>
+	<a href="/home">Back</a> |
+    <a href="/logout">Logout</a>
+	<br><br>
 
     <form method="post">
-	<!-- @csrf -->
-	{{csrf_field()}}
+    	@csrf
 		<fieldset>
 			<legend>Add</legend>
 			<table>
 				<tr>
-					<td>Username</td>
-					<td><input type="text" name="username"></td>
+					<td>USERNAME </td>
+					<td><input type="text" name="username" value=""></td>
 				</tr>
 				<tr>
-					<td>Password</td>
-					<td><input type="password" name="password"></td>
+					<td>PASSWORD </td>
+					<td><input type="password" name="password" value=""></td>
+				</tr>
+				<tr>
+					<td>NAME </td>
+					<td><input type="text" name="name" value=""></td>
+				</tr>
+				<tr>
+					<td>EMAIL </td>
+					<td><input type="text" name="email" value=""></td>
+				</tr>
+				<tr>
+					<td>DEPARTMENT </td>
+					<td><input type="text" name="dept" value=""></td>
+				</tr>
+				<tr>
+					<td>CGPA </td>
+					<td><input type="text" name="cgpa" value=""></td>
 				</tr>
                 <tr>
-					<td>Email</td>
-					<td><input type="text" name="email"></td>
+					<td>TYPE </td>
+					<td>
+						<select name='type'>
+							<option value="Admin"> ADMIN </option>
+							<option value="User"> USER </option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
