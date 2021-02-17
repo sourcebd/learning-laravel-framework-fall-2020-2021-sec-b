@@ -22,7 +22,7 @@ class AdminCheck
         else
         {
             $request->session()->flash('msg','Invalid req ... You do not have privilege to be an Admin!');
-            return redirect('/home');
+            return redirect('/home/userlist');
         }
     }
 }

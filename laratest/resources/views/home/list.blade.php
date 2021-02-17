@@ -38,5 +38,6 @@
         </tr>
         @endfor
     </table>
+    {{session('msg')}}
 </body>
 </html>
