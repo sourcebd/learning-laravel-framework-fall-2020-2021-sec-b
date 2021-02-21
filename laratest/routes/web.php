@@ -14,12 +14,11 @@
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/E-Pay', function () {
+Route::get('/', function () {
     //return view('welcome');
-    echo "<h1 style='color:Red'>Welcome to E-Pay!</h1>";
-    echo "<a href='/login'>Login</a>";
 });
 
+Route::get('/E-Pay', 'MainController@index');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@verify');
