@@ -15,8 +15,7 @@ body{color:white; background-color:rgb(0, 51, 102); margin-top:10%}
     width:30%}
 .link a:hover{color:black; background-color: yellow; border:2px solid black}
 
-.mainlink a{
-    width: 285px; 
+.mainlink a{ 
     margin: auto;
     width:30%;
     background-color: red
@@ -24,3 +23,47 @@ body{color:white; background-color:rgb(0, 51, 102); margin-top:10%}
 .mainlink a:hover{
     background-color: yellow
 }
+
+.fa {
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius:50%;
+    width:7%
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+  
+  .fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+  
+  .fa-instagram {
+    background: rgba(231, 24, 145, 0.932);
+    color: white;
+  }
+
+  .social{
+    margin: auto;
+    width:85%;
+    text-align:center;
+ }
