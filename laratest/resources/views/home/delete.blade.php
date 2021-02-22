@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Delete User</h1>
-    <a href="/home/userlist"> Back</a>
+    <a href="{{route('home.userlist')}}"> Back</a>
     <br><br>
 
 			<table>

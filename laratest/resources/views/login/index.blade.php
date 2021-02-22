@@ -32,7 +32,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" class="button" name="submit" value="Submit"></td>
-					<td><div class="link"><a href="/E-Pay" class="link">Back</a></div></td>
+					<td><div class="link"><a href="{{route('main.index')}}" class="link">Back</a></div></td>
 				</tr>
 			</table>
 	</form>

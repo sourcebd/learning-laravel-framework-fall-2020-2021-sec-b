@@ -7,10 +7,9 @@
     <title>View User List</title>
 </head>
 <body>
-
     <h1>User List</h1>
-    <a href="/home">Back</a> |
-    <a href="/logout">Logout</a>
+    <a href="{{route('home.index')}}">Back</a> |
+    <a href="{{route('login.index')}}">Logout</a>
     <br><br>
 
     <table border="1" style="text-align:center">
@@ -31,9 +30,9 @@
             <td>{{ $list[$i]['name'] }}</td>
             <td>{{ $list[$i]['type'] }}</td>
             <td>
-                <a href="/home/edit/{{ $list[$i]['user_id'] }}">Edit</a> |
-                <a href="/home/delete/{{ $list[$i]['user_id'] }}">Delete</a> |
-                <a href="/home/details/{{ $list[$i]['user_id'] }}">Details</a>
+                <a href="{{ route('home.edit', [$list[$i]['user_id']]) }}">Edit</a> |
+                <a href="{{ route('home.delete', [$list[$i]['user_id']]) }}">Delete</a> |
+                <a href="{{ route('home.show', [$list[$i]['user_id']]) }}">Details</a>
             </td>
         </tr>
         @endfor

@@ -7,8 +7,8 @@
     <title>User Details</title>
 </head>
 <body>
-    <h1>All User's Details</h1>
-    <a href="/home/userlist"> Back</a>
+    <h1>User Details</h1>
+    <a href="{{route('home.userlist')}}"> Back</a>
 	<br><br>
 
 			<table>

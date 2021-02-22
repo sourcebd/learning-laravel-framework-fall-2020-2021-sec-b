@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Create New User</h1>
-	<a href="/home">Back</a> |
-    <a href="/logout">Logout</a>
+	<a href="{{route('home.index')}}">Back</a> |
+    <a href="{{route('login.index')}}">Logout</a>
 	<br><br>
 
     <form method="post">
@@ -19,27 +19,27 @@
 			<table>
 				<tr>
 					<td>USERNAME </td>
-					<td><input type="text" name="username" value=""></td>
+					<td><input type="text" name="username" value="{{old('username')}}"></td>
 				</tr>
 				<tr>
 					<td>PASSWORD </td>
-					<td><input type="password" name="password" value=""></td>
+					<td><input type="password" name="password" value="{{old('password')}}"></td>
 				</tr>
 				<tr>
 					<td>NAME </td>
-					<td><input type="text" name="name" value=""></td>
+					<td><input type="text" name="name" value="{{old('name')}}"></td>
 				</tr>
 				<tr>
 					<td>EMAIL </td>
-					<td><input type="text" name="email" value=""></td>
+					<td><input type="text" name="email" value="{{old('email')}}"></td>
 				</tr>
 				<tr>
 					<td>DEPARTMENT </td>
-					<td><input type="text" name="dept" value=""></td>
+					<td><input type="text" name="dept" value="{{old('dept')}}"></td>
 				</tr>
 				<tr>
 					<td>CGPA </td>
-					<td><input type="text" name="cgpa" value=""></td>
+					<td><input type="text" name="cgpa" value="{{old('cgpa')}}"></td>
 				</tr>
                 <tr>
 					<td>TYPE </td>
@@ -57,5 +57,10 @@
 			</table>
 		</fieldset>
 	</form>
+
+	@foreach($errors->all() as $err)
+		{{$err}} <br>
+	@endforeach
+
 </body>
 </html>

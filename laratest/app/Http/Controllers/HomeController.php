@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Psy\Command\DumpCommand;
 use App\User;
+use Validator;
+use App\Http\Requests\UserRequest;
 
 class HomeController extends Controller
 {
@@ -28,9 +30,37 @@ class HomeController extends Controller
         return view('home.create');
     }
 
-    public function store(Request $req){
+    // All 3 ways of Validation-> public function store(Request $req){
+    public function store(UserRequest $req){ // This Validation used by Requests folder
+    
+    /* 1.
+            $this->validate($req, [
+                'username' => 'required|max:6',
+                'password' => 'required|min:6'
+            ])->validate();
+    */
+    
 
-        //insert into DB or model...
+    /* 2. ------------------------------------------
+            $req->validate([
+                'username' => 'required|max:6',
+                'password' => 'required|min:6'])->validate();
+    
+            $validation->validate();
+    */
+    
+    /* 3.   $validation = Validator::make($req->all(), [
+                'username' => 'required|max:6',
+                'password' => 'required|min:6'
+            ]);
+
+            if($validation->fails()){
+                return redirect()->route('home.create')->with('errors', $validation->errors());
+                return Back()->with('errors', $validation->errors())->withInput();            
+            }
+    */
+        
+            //insert into DB or model...
 
         echo $req->username;
 
@@ -45,7 +75,7 @@ class HomeController extends Controller
 
         $user-> save();
 
-        return redirect('/home/userlist');
+        return redirect()->route('home.userlist');
     }
 
     public function edit($id){
@@ -71,7 +101,7 @@ class HomeController extends Controller
 
         $user-> save();
 
-        return redirect('/home/userlist');
+        return redirect()->route('home.userlist');
     }
 
     public function userlist(){
@@ -90,7 +120,7 @@ class HomeController extends Controller
     public function destroy($id){
 
         if(User::destroy($id)){
-            return redirect('/home/userlist');
+            return redirect()->route('home.userlist');
         }else{
             return redirect('/home/delete/'.$id);
         }
