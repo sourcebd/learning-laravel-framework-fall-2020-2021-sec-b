@@ -8,7 +8,7 @@
 
 <div class="dadblock">
 
-<div class="titleblock">
+<div class="logintitleblock">
 
 	<h1>Access Account</h1>
 

@@ -1,69 +1,112 @@
-body{color:white; background-color:rgb(0, 51, 102); margin-top:10%}
-.dadblock{width:285px; margin:auto}
-.block{border-radius: 10%; font-family: calibri; color:white; background-color:rgb(12,175,94); border: 2px solid white; padding:10px}
-.maintitleblock{text-align:center; letter-spacing:5px; color: orange}
-.titleblock{text-align:center; letter-spacing:5px}
-.sessionmsg{font-family: calibri; color:yellow; text-align:center}
-.textbox{background-color:orange}
-.button{font-family: calibri; font-size: 15px; color:white; background-color: red; border: 2px solid black; border-radius: 50px;}
-.button:hover{color:black; background-color: yellow; border:2px solid black}
-.link a{font-family: calibri; font-size: 15px; color:white; background-color: darkblue; display: block;
-    text-decoration: none;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: 50px;
-    width:30%}
-.link a:hover{color:black; background-color: yellow; border:2px solid black}
-
+body{
+  color:darkblue; 
+  background-color:white; 
+  margin-top:10%
+}
+.dadblock{
+  width:285px; 
+  margin: auto
+}
+.block{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10%; 
+  font-family: calibri; 
+  color:white; 
+  background-color:rgb(12,175,94); 
+  border: 2px solid white; 
+  padding: 10px
+}
+.maintitleblock{
+  text-align:center; 
+  letter-spacing:5px; 
+  color: red;
+  text-shadow: 1px 1px 3px #000000;
+}
+.logintitleblock{
+  text-align: center; 
+  letter-spacing: 5px; 
+  color:darkblue; 
+  background-color:white; 
+  margin-top: 10%; 
+  text-shadow: 1px 1px 3px #000000
+}
+.sessionmsg{
+  font-family: calibri; 
+  color:darkblue; 
+  text-align: center
+}
+.textbox{
+  background-color:orange
+}
+.button{
+  font-family: calibri; 
+  font-size: 15px; 
+  color:white;
+  background-color: red; 
+  border: 2px solid black; 
+  border-radius: 50px
+}
+.button:hover{
+  color:black; 
+  background-color: yellow; 
+  border: 2px solid black
+}
+.link a{font-family: calibri; 
+  font-size: 15px; color:white; 
+  background-color: darkblue; 
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 30%
+}
+.link a:hover{
+  color:black; 
+  background-color: yellow; 
+  border:2px solid black
+}
 .mainlink a{ 
-    margin: auto;
-    width:30%;
-    background-color: red
+  margin: auto;
+  width: 30%;
+  background-color: red
 }
 .mainlink a:hover{
-    background-color: yellow
+  background-color: yellow
 }
-
 .fa {
-    padding: 8px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius:50%;
-    width:7%
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-  }
-  
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-  
-  .fa-google {
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius:50%;
+  width: 7%
+  }  
+.fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-google {
     background: #dd4b39;
     color: white;
   }
-  
-  .fa-youtube {
-    background: #bb0000;
-    color: white;
-  }
-  
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
   .fa-instagram {
     background: rgba(231, 24, 145, 0.932);
     color: white;
-  }
-
-  .social{
-    margin: auto;
-    width:85%;
-    text-align:center;
- }
+}
+.social{
+  margin: auto;
+  width: 85%;
+  text-align: center;
+}
