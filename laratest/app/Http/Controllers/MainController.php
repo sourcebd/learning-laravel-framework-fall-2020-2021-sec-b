@@ -9,6 +9,6 @@ class MainController extends Controller
 {
     public function index(){
 
-        return view('Login.Main');
+        return view('Main');
     }
 }

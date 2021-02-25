@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Login page</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/app.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
 
-<div class="dadblock">
+<div class="loginblock">
 
-<div class="logintitleblock">
+	<div class="logintitleblock">
 
-	<h1>Access Account</h1>
+		<h1>Access Account</h1>
 
-</div>
+	</div>
 
 <div class="block">
 
@@ -30,19 +33,20 @@
 					<td>Password</td>
 					<td><input type="password" class="textbox" name="password"></td>
 				</tr>
+</div>
 				<tr>
 					<td><input type="submit" class="button" name="submit" value="Submit"></td>
-					<td><div class="link"><a href="{{route('main.index')}}" class="link">Back</a></div></td>
+					<td><div class="link"><a href="{{route('main.index')}}">Back</a></div></td>
 				</tr>
 			</table>
 	</form>
-	</div>
-
+	
+</div>
+	
 	<div class="sessionmsg">
     {{session('msg')}}
 	</div>
 
-	</div>
-	
+
 </body>
 </html>
