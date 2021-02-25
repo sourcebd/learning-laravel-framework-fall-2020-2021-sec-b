@@ -10,12 +10,9 @@ use App\Http\Requests\UserRequest;
 
 class HomeController extends Controller
 {
-    public function index( Request $req){
+    public function index(Request $req){
 
-        $name = "alamin";
-        $id = "123";
-
-            return view('home.index', compact('id', 'name'));
+        return view('home.index');
 
     }
 
@@ -27,7 +24,9 @@ class HomeController extends Controller
     }
 
     public function create(){
+
         return view('home.create');
+        
     }
 
     // All 3 ways of Validation-> public function store(Request $req){
@@ -60,9 +59,18 @@ class HomeController extends Controller
             }
     */
         
-            //insert into DB or model...
+        //insert into DB or model...
 
-        echo $req->username;
+        if($req->hasFile('myfile')){
+            $file = $req->file('myfile');  
+            /*echo $file->getClientOriginalName()."<br>";  
+            echo $file->getClientOriginalExtension()."<br>";  
+            echo $file->getSize()."<br>";*/
+            //$file->move('upload', $file->getClientOriginalName());
+
+            $filename = time().".".$file->getClientOriginalExtension();
+
+            $file->move('upload', $filename);
 
         $user = new User();
         $user->username = $req->username;
@@ -72,11 +80,14 @@ class HomeController extends Controller
         $user->dept = $req->dept;
         $user->cgpa = $req->cgpa;
         $user->type = $req->type;
+        $user->profile_img = $filename;
 
         $user-> save();
-
+        
         return redirect()->route('home.userlist');
     }
+        
+}
 
     public function edit($id){
       

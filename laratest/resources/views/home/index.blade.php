@@ -6,8 +6,9 @@
 <body>
     <h1>Welcome home! {{ session('username') }} </h1>
     <h1>Hey {{ session('type') }}!</h1>
-    <a href="{{route('home.create')}}">Create User</a> |
-    <a href="{{route('home.userlist')}}">View User List</a> |
-    <a href="{{route('login.index')}}">Logout</a>
+    <a href="{{route('home.create')}}"> Create User</a> |
+    <a href="{{route('home.userlist')}}"> View User List</a> |
+    <a href="{{route('product.index')}}"> Product</a> |
+    <a href="{{route('logout.index')}}"> Logout</a>
 </body>
 </html>

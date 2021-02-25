@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>Create New User</h1>
-	<a href="{{route('home.index')}}">Back</a> |
-    <a href="{{route('login.index')}}">Logout</a>
+	<a href="{{route('home.index')}}"> Back</a> |
+	<a href="{{route('product.index')}}"> Product</a> |
+    <a href="{{route('logout.index')}}"> Logout</a>
 	<br><br>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     	@csrf
 		<fieldset>
 			<legend>Add</legend>
@@ -49,6 +50,10 @@
 							<option value="User"> USER </option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<td>UPLOAD IMAGE </td>
+					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
 				</tr>
 				<tr>
 					<td></td>

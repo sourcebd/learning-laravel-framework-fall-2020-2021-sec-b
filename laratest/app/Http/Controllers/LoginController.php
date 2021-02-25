@@ -29,14 +29,7 @@ class LoginController extends Controller
            return redirect()->route('login.index');
         }
 
-        elseif($req->username == "Nafi" && $req->password == "1999"){
-
-            $req->session()->put('username', $req->username);
-            $req->session()->put('type', 'Admin');
-            return redirect()->route('home.index');
-        }
-
-        elseif(count($user)>0){
+        elseif($req->username !='' && $req->password != '' && count($user)>0){
             //$req->session()->put('password', $req->password);
             //$req->session()->get('name');
             //$req->session()->forget('name');

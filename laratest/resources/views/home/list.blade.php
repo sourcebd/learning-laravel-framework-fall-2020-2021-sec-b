@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>User List</h1>
-    <a href="{{route('home.index')}}">Back</a> |
-    <a href="{{route('login.index')}}">Logout</a>
+    <a href="{{route('home.index')}}"> Back</a> |
+    <a href="{{route('product.index')}}"> Product</a> |
+    <a href="{{route('logout.index')}}"> Logout</a>
     <br><br>
 
     <table border="1" style="text-align:center">

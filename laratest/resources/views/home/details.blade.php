@@ -12,6 +12,11 @@
 	<br><br>
 
 			<table>
+				<tr>
+					<td colspan="2">
+					<img src="{{asset('/upload')}}/{{$user['profile_img']}}" height="100px" width="100px">
+					</td>
+				</tr>
                  <tr>
 					<td>USERNAME:</td>
 					<td>{{ $user['username'] }}</td>
@@ -39,6 +44,10 @@
                 <tr>
 					<td>TYPE:</td>
 					<td>{{ $user['type'] }}</td>
+				</tr>
+				<tr>
+					<td>IMAGE</td>
+					<td>{{ $user['profile_img'] }}</td>
 				</tr>
 			</table>
 </body>
