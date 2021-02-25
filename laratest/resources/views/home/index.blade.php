@@ -25,13 +25,13 @@
 <tr>
 
 <td>
-    <a style="border-radius: 1px; padding: 7px; border: none; text-decoration:none" class="button" href="{{route('home.create')}}">Create User</a>
+    <a style="border-radius: 1px; padding: 5px; border: none; text-decoration:none" class="button" href="{{route('home.create')}}">Create User</a>
 </td>
-    <a style="border-radius: 1px; padding: 7px; border: none; text-decoration:none" class="button" href="{{route('home.userlist')}}">View User List</a>
+    <a style="border-radius: 1px; padding: 5px; border: none; text-decoration:none" class="button" href="{{route('home.userlist')}}">View User List</a>
 </td>
-    <a style="border-radius: 1px; padding: 7px; border: none; text-decoration:none" class="button" href="{{route('product.index')}}">Product</a>
+    <a style="border-radius: 1px; padding: 5px; border: none; text-decoration:none" class="button" href="{{route('product.index')}}">Product</a>
 </td>
-    <a style="border-radius: 1px; padding: 7px; border: none; text-decoration:none" class="button" href="{{route('logout.index')}}">Logout</a>
+    <a style="border-radius: 1px; padding: 5px; border: none; text-decoration:none" class="button" href="{{route('logout.index')}}">Logout</a>
  </td>
 
  <tr>

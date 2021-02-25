@@ -1,50 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Product</title>
-</head>
-<body>
-    <h1>Add New Product</h1>
-	<a href="{{route('product.index')}}"> Back</a> |
-	<a href="{{route('home.index')}}"> Home</a> |
+@extends('layout.main')
+    
+	@section('title')
+	Add Product
+	@endsection
+
+	@section('main_content')	
+	<div class="regblock">
+
+	@section('nav_bar')
+	<a href="{{route('home.index')}}"> Home</a>
+	<a href="{{route('product.productlist')}}"> Product List</a>
+    <a href="{{route('product.index')}}"> Product</a>
     <a href="{{route('logout.index')}}"> Logout</a>
 	<br><br>
+	@endsection
 
+	@section('page_title')
+	<h1>Add New Product</h1>
+	@endsection
+
+	<div class="block">
     <form method="post" enctype="multipart/form-data">
     	@csrf
-		<fieldset>
-			<legend>Add</legend>
+		
+			<legend><h3 style="margin:0">Add</h3></legend>
 			<table>
 				<tr>
-					<td>PRODUCT NAME </td>
-					<td><input type="text" name="product_name" value="{{old('product_name')}}"></td>
+					<td>Product Name </td>
+					<td><input type="text" name="product_name" class="textbox" value="{{old('product_name')}}"></td>
 				</tr>
 				<tr>
-					<td>PRODUCT PRICE </td>
-					<td><input type="text" name="product_price" value="{{old('product_price')}}"></td>
+					<td>Product Price </td>
+					<td><input type="text" name="product_price" class="textbox" value="{{old('product_price')}}"></td>
 				</tr>
 				<tr>
-					<td>PRODUCT QUANTITY </td>
-					<td><input type="text" name="product_quantity" value="{{old('product_quantity')}}"></td>
+					<td>Product Quantity </td>
+					<td><input type="text" name="product_quantity" class="textbox" value="{{old('product_quantity')}}"></td>
 				</tr>
 				<tr>
-					<td>UPLOAD IMAGE </td>
+					<td>Upload Image </td>
 					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
 				</tr>
+</div>
 				<tr>
-					<td></td>
-					<td><input type="submit" name="submit" value="Save"></td>
+					<td><input type="submit" name="submit" class="button" value="Save"></td>
+					<td><div class="link"><a href="{{route('product.index')}}">Back</a></div></td>
 				</tr>
 			</table>
-		</fieldset>
+		
 	</form>
 
+</div>	
+
+	<div class="sessionmsg">
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+	</div>
 
-</body>
-</html>
+@endsection
