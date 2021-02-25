@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<div class="logincontainer">
+
 <div class="loginblock">
 
 	<div class="logintitleblock">
@@ -47,6 +49,7 @@
     {{session('msg')}}
 	</div>
 
+</div>	
 
 </body>
 </html>

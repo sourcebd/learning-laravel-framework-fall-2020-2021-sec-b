@@ -1,49 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create User</title>
-</head>
-<body>
-    <h1>Create New User</h1>
-	<a href="{{route('home.index')}}"> Back</a> |
-	<a href="{{route('product.index')}}"> Product</a> |
+@extends('layout.main')
+    
+	@section('title')
+	Create User
+	@endsection
+
+	@section('main_content')	
+	<div class="regblock">
+
+	@section('nav_bar')
+	<a href="{{route('home.index')}}"> Home</a>
+	<a href="{{route('home.userlist')}}"> User List</a>
+    <a href="{{route('product.index')}}"> Product</a>
     <a href="{{route('logout.index')}}"> Logout</a>
 	<br><br>
+	@endsection
 
+	@section('page_title')
+	<h1>Create New User</h1>
+	@endsection
+
+	<div class="block">
     <form method="post" enctype="multipart/form-data">
     	@csrf
-		<fieldset>
-			<legend>Add</legend>
+		
+			<legend><h3 style="margin:0">Add</h3></legend>
 			<table>
 				<tr>
-					<td>USERNAME </td>
-					<td><input type="text" name="username" value="{{old('username')}}"></td>
+					<td>Username </td>
+					<td><input type="text" name="username" class="textbox" value="{{old('username')}}"></td>
 				</tr>
 				<tr>
-					<td>PASSWORD </td>
-					<td><input type="password" name="password" value="{{old('password')}}"></td>
+					<td>Password </td>
+					<td><input type="password" name="password" class="textbox" value="{{old('password')}}"></td>
 				</tr>
 				<tr>
-					<td>NAME </td>
-					<td><input type="text" name="name" value="{{old('name')}}"></td>
+					<td>Name </td>
+					<td><input type="text" name="name" class="textbox" value="{{old('name')}}"></td>
 				</tr>
 				<tr>
-					<td>EMAIL </td>
-					<td><input type="text" name="email" value="{{old('email')}}"></td>
+					<td>Email </td>
+					<td><input type="text" name="email" class="textbox" value="{{old('email')}}"></td>
 				</tr>
 				<tr>
-					<td>DEPARTMENT </td>
-					<td><input type="text" name="dept" value="{{old('dept')}}"></td>
+					<td>Department </td>
+					<td><input type="text" name="dept" class="textbox" value="{{old('dept')}}"></td>
 				</tr>
 				<tr>
 					<td>CGPA </td>
-					<td><input type="text" name="cgpa" value="{{old('cgpa')}}"></td>
+					<td><input type="text" name="cgpa" class="textbox" value="{{old('cgpa')}}"></td>
 				</tr>
                 <tr>
-					<td>TYPE </td>
+					<td>Type </td>
 					<td>
 						<select name='type'>
 							<option value="Admin"> ADMIN </option>
@@ -52,20 +59,24 @@
 					</td>
 				</tr>
 				<tr>
-					<td>UPLOAD IMAGE </td>
+					<td>Upload Image </td>
 					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
 				</tr>
+</div>
 				<tr>
-					<td></td>
-					<td><input type="submit" name="submit" value="Save"></td>
+					<td><input type="submit" name="submit" class="button" value="Save"></td>
+					<td><div class="link"><a href="{{route('home.index')}}">Back</a></div></td>
 				</tr>
 			</table>
-		</fieldset>
+		
 	</form>
 
+</div>	
+
+	<div class="sessionmsg">
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+	</div>
 
-</body>
-</html>
+@endsection

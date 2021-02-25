@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<div class="regcontainer">
+
 <div class="regblock">
 
 <div class="logintitleblock">
@@ -76,6 +78,8 @@
 		{{$err}} <br>
 	@endforeach
 	</div>
+
+</div>
 
 </body>
 </html>
