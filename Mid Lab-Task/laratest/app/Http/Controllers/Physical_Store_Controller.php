@@ -30,31 +30,31 @@ class Physical_Store_Controller extends Controller
 
     }
 
-    public function edit($id){
-        
-        $user = Customer::find($id);
-        return view('home.edit')->with('user', $user);
+    public function saleslogCreate(){
+
+        return view('system.salesLog');
+
     }
 
+    public function saleslogStore(PhysicalRequest $req){
 
-    public function update($id, Request $req){
+    $sales = new Physical_store_channel();
 
-        $user = Customer::find($id);
-        
-            $user->full_name     = $req->full_name;
-            $user->username     = $req->username;
-            $user->email         = $req->email;
-            $user->password      = $req->password;
-            $user->country       = $req->country;
-            $user->phone         = $req->phone;
-            $user->city          = $req->city;
-            $user->company_name = $req->company_name;
-            $user->user_type = $req->user_type;
-            $user->date_added = $req->date_added;
-            $user->save();
+    $sales->customer_name = $req->customer_name;
+    $sales->customer_address = $req->customer_address;
+    $sales->phone = $req->phone;
+    $sales->product_id = $req->product_id;
+    $sales->product_name = $req->product_name;
+    $sales->unit_price = $req->unit_price;
+    $sales->quantity = $req->quantity;
+    $sales->total_price = $req->total_price;
+    $sales->date_sold = $req->date_sold;
+    $sales->payment_type = $req->payment_type;
+    $sales->status = $req->status;
+    $sales->save();
 
-
-        return redirect('/home/userlist');
+    $req->session()->flash('msg', 'Stored successfully...check it out!');
+    return redirect()->route('system.physicalStore');
     }
 
     public function physicalStorelist(){

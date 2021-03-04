@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     //return view('welcome');
-    echo "welcome";
+    echo "Welcome";
 });
 
 Route::get('/registration', 'RegController@index')->name('registration.index');
@@ -33,6 +33,9 @@ Route::group(['middleware'=> 'sess'], function(){
     Route::get('/home/edit/{id}', 'HomeController@edit')->name('home.edit');
     Route::post('/home/edit/{id}', 'HomeController@update');
 
+
+    Route::get('/system/sales/physical_store/sales_log', 'Physical_Store_Controller@saleslogCreate')->name('system.salescreate');
+    Route::post('/system/sales/physical_store/sales_log', 'Physical_Store_Controller@saleslogStore');
     Route::get('/system/sales/physical_store', 'Physical_Store_Controller@physicalStorelist')->name('system.physicalStore');
     Route::get('/system/sales/social_media', 'Physical_Store_Controller@socialMedialist')->name('system.socialMedia');
     Route::get('/system/sales/ecommerce', 'Physical_Store_Controller@ecommercelist')->name('system.ecommerce');

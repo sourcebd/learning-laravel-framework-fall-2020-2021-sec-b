@@ -11,12 +11,12 @@ class RegController extends Controller
 {
     public function index( Request $req){
 
-        $name = "emon";
+        $name = "Nafi";
         $id = "123";
 
         //return view('home.index', ['name'=> 'xyz', 'id'=>12]);
         // return view('home.index')
-        //         ->with('name', 'emon')
+        //         ->with('name', 'Nafi')
         //         ->with('id', '12');
 
         // return view('home.index')
@@ -54,6 +54,17 @@ class RegController extends Controller
             return Back()->with('errors', $validation->errors())->withInput();            
         }*/
 
+        if($req->hasFile('myfile')){
+            $file = $req->file('myfile');  
+            /*echo $file->getClientOriginalName()."<br>";  
+            echo $file->getClientOriginalExtension()."<br>";  
+            echo $file->getSize()."<br>";*/
+            //$file->move('upload', $file->getClientOriginalName());
+
+            $filename = time().".".$file->getClientOriginalExtension();
+
+            $file->move('upload', $filename);
+
             $user = new Customer();
             $user->full_name     = $req->full_name;
             $user->username     = $req->username;
@@ -65,11 +76,12 @@ class RegController extends Controller
             $user->company_name = $req->company_name;
             $user->user_type = $req->user_type;
             $user->date_added = $req->date_added;
+            $user->profile_img = $filename;
             $user->save();
 
             $req->session()->flash('msg', 'Registration is successful...login now!');
             return redirect()->route('login.index');
 
         }
-
+    }
 }

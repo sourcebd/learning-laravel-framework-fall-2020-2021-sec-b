@@ -7,6 +7,10 @@
 
 
 @section('main_content')
+    
+    <br><br>
+    {{session('msg')}}
+
     <center><h1>Sold Items of last 7 Days</h1></center>
 
     No. of Products:&nbsp;&nbsp;
@@ -17,6 +21,11 @@
 
     Product with Max number:&nbsp;&nbsp;
     {{$max}} <br><br>
+
+    <td> 
+    <a href="{{ route('system.salescreate') }}">View Sales Log</a>
+    </td>
+    <br><br>
 
     <table border="1">
 
@@ -54,6 +63,7 @@
                 <td>{{$i['status']}}</td>
                 <td>{{$i['created_at']}}</td>
                 <td>{{$i['updated_at']}}</td>
+                
             </tr>
             @endforeach     
     </table>
@@ -103,6 +113,7 @@
                 <td>{{$i['status']}}</td>
                 <td>{{$i['created_at']}}</td>
                 <td>{{$i['updated_at']}}</td>
+                
             </tr>
             @endforeach
 

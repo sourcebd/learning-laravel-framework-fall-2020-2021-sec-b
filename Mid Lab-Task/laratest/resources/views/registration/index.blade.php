@@ -67,6 +67,10 @@
 					<td></td>
 					<td><input type="submit" name="submit" value="Register"></td>
 				</tr>
+				<tr>
+					<td>Upload Image </td>
+					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
+				</tr>
 			</table>
 		</fieldset>
 	</form>
@@ -74,5 +78,10 @@
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+
+	<br>
+	<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
+	Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
+	
 </body>
 </html>

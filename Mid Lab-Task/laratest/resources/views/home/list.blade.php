@@ -2,7 +2,7 @@
 
 
 @section('title')
-USER LIST :: Epay.com
+Home | User List
 @endsection
 
 
@@ -11,10 +11,10 @@ USER LIST :: Epay.com
 @endsection
 
 
-
 @section('nav_bar')
-<a href="/home">Back</a> |
-<a href="/logout">logout</a>
+<a href="/logout">Logout</a> |
+<a href="/home">Home</a> |
+<br><br>
 @endsection
 
 

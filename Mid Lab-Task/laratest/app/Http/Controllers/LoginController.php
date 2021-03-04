@@ -27,7 +27,7 @@ class LoginController extends Controller
 
 
         if($req->email == "" || $req->password == ""){
-           $req->session()->flash('msg', 'null email or password...');
+           $req->session()->flash('msg', 'Null email or password...');
            return redirect('/login');
 
         }elseif(count($user) > 0 ){
