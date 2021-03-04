@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration</title>
+    <title>Customer Registration</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
@@ -56,8 +56,11 @@
 					<td>User Type</td>
 					<td>
 						<select name='user_type'>
-							<option value="Active"> ACTIVE </option>
-							<option value="Inactive"> INACTIVE </option>
+							<option value="Customer"> CUSTOMER </option>
+							<option value="Admin"> ADMIN </option>
+							<option value="Vendor"> VENDOR </option>
+							<option value="Sales"> SALES </option>
+							<option value="Accountant"> ACCOUNTANT </option>
 						</select>
 					</td>
 				</tr>
@@ -75,11 +78,12 @@
 		</fieldset>
 	</form>
 
+	<br><br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+	<br><br>
 
-	<br>
 	<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
 	Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
 	

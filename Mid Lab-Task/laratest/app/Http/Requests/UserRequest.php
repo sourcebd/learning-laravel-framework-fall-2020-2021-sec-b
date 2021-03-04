@@ -25,13 +25,13 @@ class UserRequest extends FormRequest
     {
         return [
             'full_name' => 'required|unique:customers|min:3|max:30|regex:/[a-zA-Z]/i|bail',
-            'username' => 'required|unique:customers|max:9|bail',
+            'username' => 'required|max:9|bail',
             'password' => 'required|min:8|max:20',
-            'email' => 'required|unique:customers|regex:/^.+@.+$/i|min:10|max:50',
+            'email' => 'required|unique:customers|unique:admins|unique:sales|unique:accountants|unique:vendors|regex:/^.+@.+$/i|min:10|max:50',
             'city' => 'required|min:3|max:20',
             'country' => 'required|min:3|max:20',
             'company_name' => 'required|min:3|max:20',
-            'phone' => 'required|min:11||numeric',
+            'phone' => 'required|min:11|numeric',
             
         ];
     }
@@ -44,3 +44,5 @@ class UserRequest extends FormRequest
         ];
     }
 }
+
+// unique:tablename = new usernamedb() ;  use App\Check\usernamedb;

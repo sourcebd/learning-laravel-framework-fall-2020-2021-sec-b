@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | User Details</title>
+    <title>Home | Customer Details</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <h1>User Details, {{ $user['id'] }}</h1>
-	<a href="/logout">Logout</a> |
-	<a href="/home">Home</a> |
-	<a href="/home/userlist">User List</a> |
+    <h1>Customer Details, {{ $user['id'] }}</h1>
+	<a href="{{route('logout.index')}}">Logout</a> |
+	<a href="{{route('home.index')}}">Home</a> |
+	<a href="{{route('home.Clist')}}">Customer List</a> |
 	<br><br>
 	
 			<table>

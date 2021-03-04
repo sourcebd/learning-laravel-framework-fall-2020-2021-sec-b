@@ -8,10 +8,10 @@
 
 <h1>Client Management System</h1>
 
-<a href="{{route('registration.index')}}">Registration</a>
+<a href="{{route('Creg.index')}}">Customer Registration</a>
 
 
-	<h1>Login Page</h1>
+	<h1>Login</h1>
 
 	<form method="post">
         {{-- @csrf --}}
@@ -36,12 +36,14 @@
 			</table>
 		</fieldset>
 	</form>
+
+	<br><br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
     {{session('msg')}}
+	<br><br>
 
-	<br>
 	<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
 	Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
 

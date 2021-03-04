@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Create User</title>
+    <title>Home | Create Customer</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
 
-    <h1>Create New user</h1>
-	<a href="/logout">Logout</a> |
-	<a href="/home">Home</a> |
+    <h1>Create New Customer</h1>
+	<a href="{{route('logout.index')}}">Logout</a> |
+	<a href="{{route('home.index')}}">Home</a> |
 	<br><br>
 	
     <form method="post" enctype="multipart/form-data">
@@ -55,8 +55,11 @@
 					<td>User Type</td>
 					<td>
 						<select name='user_type'>
-							<option value="Active"> ACTIVE </option>
-							<option value="Inactive"> INACTIVE </option>
+							<option value="Customer"> CUSTOMER </option>
+							<option value="Admin"> ADMIN </option>
+							<option value="Vendor"> VENDOR </option>
+							<option value="Sales"> SALES </option>
+							<option value="Accountant"> ACCOUNTANT </option>
 						</select>
 					</td>
 				</tr>
@@ -74,10 +77,13 @@
 		</fieldset>
 	</form>
 
+<br><br>
 	@extends('layout.footer')
 
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+<br><br>
+
 </body>
 </html>

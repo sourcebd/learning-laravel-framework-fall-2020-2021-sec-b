@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Edit User</title>
+    <title>Home | Edit Customer</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <h1>Edit User, {{ $user['id'] }}</h1>
-	<a href="/logout">Logout</a> |
-	<a href="/home">Home</a> |
-	<a href="/home/userlist">User List</a> |
+    <h1>Edit Customer, {{ $user['id'] }}</h1>
+	<a href="{{route('logout.index')}}">Logout</a> |
+	<a href="{{route('home.index')}}">Home</a> |
+	<a href="{{route('home.Clist')}}">Customer List</a> |
 	<br><br>
 
     <form method="post">
@@ -54,10 +54,15 @@
 				<tr>
 					<td>User Type</td>
 					<td>
-						<select name='user_type'>
-							<option value="Active"> ACTIVE </option>
-							<option value="Inactive"> INACTIVE </option>
+					<td>
+					<select name='user_type'>
+							<option value="Customer" @if($user['user_type'] == 'Customer') selected @endif > CUSTOMER </option>
+							<option value="Admin"  @if($user['user_type'] == 'Admin') selected @endif > ADMIN </option>
+							<option value="Accountant" @if($user['user_type'] == 'Accountant') selected @endif > ACCOUNTANT </option>
+							<option value="Sales"  @if($user['user_type'] == 'Sales') selected @endif > SALES </option>
+							<option value="Vendor" @if($user['user_type'] == 'Vendor') selected @endif > VENDOR </option>
 						</select>
+					</td>
 					</td>
 				</tr>
 				<tr>

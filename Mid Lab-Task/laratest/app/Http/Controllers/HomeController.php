@@ -23,22 +23,48 @@ class HomeController extends Controller
         //         ->withName($name)
         //         ->withId($id);
 
-        return view('home.index', compact('id', 'name'));
+
+            if($req->session()->get('user_type')=='Admin')
+            {
+                
+                return view('home.admin');
+    
+            }
+            elseif($req->session()->get('user_type')=='Accountant')
+            {
+    
+                return view('home.accountant');
+            }
+            elseif($req->session()->get('user_type')=='Customer')
+            {
+    
+                return view('home.customer');
+            }
+            elseif($req->session()->get('user_type')=='Sales')
+            {
+    
+                return view('home.sales');
+            }
+            elseif($req->session()->get('user_type')=='Vendor')
+            {
+    
+                return view('home.vendor');
+            }
 
     }
 
-    public function show($id){
+    public function Cshow($id){
 
         $user = Customer::find($id);
         //print_r($user);
         return view('home.details')->with('user', $user);
     }
 
-    public function create(){
+    public function Ccreate(){
         return view('home.create');
     }
 
-    public function store(UserRequest $req){
+    public function Cstore(UserRequest $req){
 
 /*
         $this->validate($req, [
@@ -89,18 +115,18 @@ class HomeController extends Controller
             $user->profile_img = $filename;
 
             $user->save();
-            return redirect()->route('home.userlist');
+            return redirect()->route('home.Clist');
         }
     }
 
-    public function edit($id){
+    public function Cedit($id){
         
         $user = Customer::find($id);
         return view('home.edit')->with('user', $user);
     }
 
 
-    public function update($id, Request $req){
+    public function Cupdate($id, Request $req){
 
         $user = Customer::find($id);
         
@@ -117,10 +143,10 @@ class HomeController extends Controller
             $user->save();
 
 
-        return redirect('/home/userlist');
+        return redirect()->route('home.Clist');
     }
 
-    public function userlist(){
+    public function Clist(){
         
         $userlist = Customer::all();
         //$userlist = $this->getUserlist();
@@ -136,18 +162,18 @@ class HomeController extends Controller
             ];
     }*/
 
-    public function delete($id){
+    public function Cdelete($id){
 
         $user = Customer::find($id);
         return view('home.delete')->with('user', $user);
     }
 
-    public function destroy($id){
+    public function Cdestroy($id){
 
         if(Customer::destroy($id)){
-            return redirect('/home/userlist');
+            return redirect()->route('home.Clist');
         }else{
-            return redirect('/home/delete/'.$id);
+            return redirect('/home/delete/customer/'.$id);
         }
 
     }

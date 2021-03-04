@@ -86,8 +86,10 @@
 		</fieldset>
 	</form>
 
+<br><br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
+
 </body>
 </html>

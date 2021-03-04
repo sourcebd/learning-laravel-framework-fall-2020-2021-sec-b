@@ -7,7 +7,7 @@ use App\Customer;
 use Validator;
 use App\Http\Requests\UserRequest;
 
-class RegController extends Controller
+class CRegController extends Controller
 {
     public function index( Request $req){
 
@@ -28,7 +28,7 @@ class RegController extends Controller
     }
 
 
-    public function verify(UserRequest $req){
+    public function Creg(UserRequest $req){
 
 /*
         $this->validate($req, [

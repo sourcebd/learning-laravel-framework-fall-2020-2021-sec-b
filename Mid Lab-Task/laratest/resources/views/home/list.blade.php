@@ -2,18 +2,18 @@
 
 
 @section('title')
-Home | User List
+Home | Customer List
 @endsection
 
 
 @section('page_title')
-<h1>User list</h1>
+<h1>Customer list</h1>
 @endsection
 
 
 @section('nav_bar')
-<a href="/logout">Logout</a> |
-<a href="/home">Home</a> |
+<a href="{{route('logout.index')}}">Logout</a> |
+<a href="{{route('home.index')}}">Home</a> |
 <br><br>
 @endsection
 
@@ -35,9 +35,9 @@ Home | User List
             <td>{{ $list[$i]['password'] }}</td>
             <td>{{ $list[$i]['user_type'] }}</td>
             <td>
-                <a href="{{ route('home.edit', [$list[$i]['id']]) }}">Edit</a> |
-                <a href="/home/delete/{{ $list[$i]['id'] }}">Delete</a> |
-                <a href="/home/details/{{ $list[$i]['id'] }}">Details</a>
+                <a href="{{ route('home.Cedit', [$list[$i]['id']]) }}">Edit</a> |
+                <a href="/home/delete/customer/{{ $list[$i]['id'] }}">Delete</a> |
+                <a href="/home/details/customer/{{ $list[$i]['id'] }}">Details</a>
             </td>
         </tr>
         @endfor

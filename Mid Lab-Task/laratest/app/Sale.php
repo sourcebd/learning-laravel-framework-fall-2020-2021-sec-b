@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Sale extends Model
 {
     protected $table = null;
     public $timestamps = false;

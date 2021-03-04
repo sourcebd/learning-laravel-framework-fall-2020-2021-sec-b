@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Delete User</title>
+    <title>Home | Delete Customer</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <h1>Delete User, {{ $user['id'] }}</h1>
-	<a href="/logout">Logout</a> |
-	<a href="/home">Home</a> |
-	<a href="/home/userlist">User List</a> |
+    <h1>Delete Customer, {{ $user['id'] }}</h1>
+	<a href="{{route('logout.index')}}">Logout</a> |
+	<a href="{{route('home.index')}}">Home</a> |
+	<a href="{{route('home.Clist')}}">Customer List</a> |
 	<br><br>
 
 			<table>
