@@ -16,7 +16,6 @@
 @section('main_content')
     <center>
 
-    {{session('msg')}}
     <br>
         <h1>Upload Excel</h1>
         <br>
@@ -27,5 +26,10 @@
             <input type="file" name='file'>
             <input type="submit" value="Submit">
         </form>
+        <br>
+        @foreach($errors->all() as $err)
+		{{$err}} <br>
+	@endforeach
+    {{session('msg')}}
     </center>
 @endsection

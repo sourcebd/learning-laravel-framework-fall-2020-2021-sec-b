@@ -8,6 +8,7 @@ use App\Social_media_channel;
 use App\Ecommerce_channel;
 use Validator;
 use App\Http\Requests\PhysicalRequest;
+use App\Http\Requests\ExcelRequest;
 use Carbon\Carbon;
 
 use PDF;
@@ -74,7 +75,7 @@ class Physical_Store_Controller extends Controller
     return view('system.uploadExcelview');
     }
 
-    public function upload(Request $req) 
+    public function upload(ExcelRequest $req) 
     {
         Excel::import(new ProductUpload, request()->file('file'));
         $req->session()->flash('msg', 'Excel uploaded into database successfully...check it out!');
