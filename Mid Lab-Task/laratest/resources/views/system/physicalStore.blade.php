@@ -3,7 +3,6 @@
 @section('nav_bar')
 <a href="{{route('logout.index')}}">Logout</a> |
 <a href="{{route('home.index')}}">Home</a> |
-<a href="{{route('home.Clist')}}">Customer List</a> |
 <a href="{{route('system.physicalStore')}}">Physical Store</a> |
 <a href="{{route('system.socialMedia')}}">Social Media</a> |
 <a href="{{route('system.ecommerce')}}">E-Commerce Web App</a> |
@@ -59,7 +58,7 @@
             @foreach ($list as $i)
             <tr>
                 <td>{{$i['id']}}</td>
-                <td>{{$i['customer_name']}}</td>
+                <td>{{$i->customer_name}}</td>
                 <td>{{$i['customer_address']}}</td>
                 <td>{{$i['phone']}}</td>
                 <td>{{$i['product_id']}}</td>
@@ -109,7 +108,7 @@
             @foreach ($sold as $i)
             <tr>
                 <td>{{$i['id']}}</td>
-                <td>{{$i['customer_name']}}</td>
+                <td>{{$i->customer_name}}</td>
                 <td>{{$i['customer_address']}}</td>
                 <td>{{$i['phone']}}</td>
                 <td>{{$i['product_id']}}</td>

@@ -126,7 +126,7 @@ class HomeController extends Controller
     }
 
 
-    public function Cupdate($id, Request $req){
+    public function Cupdate($id, UserRequest $req){
 
         $user = Customer::find($id);
         

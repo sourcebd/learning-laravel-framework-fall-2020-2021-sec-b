@@ -15,7 +15,7 @@ class VendorCheck
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->get('user_type') == "vendor")
+        if($request->session()->get('user_type') == "Vendor")
         {
             return $next($request);
         }

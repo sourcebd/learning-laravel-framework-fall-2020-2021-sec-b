@@ -136,19 +136,4 @@ class Physical_Store_Controller extends Controller
             ];
     }*/
 
-    public function delete($id){
-
-        $user = Customer::find($id);
-        return view('home.delete')->with('user', $user);
-    }
-
-    public function destroy($id){
-
-        if(Customer::destroy($id)){
-            return redirect('/home/userlist');
-        }else{
-            return redirect('/home/delete/'.$id);
-        }
-
-    }
 }

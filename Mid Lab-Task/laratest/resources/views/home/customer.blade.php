@@ -11,6 +11,8 @@ Home | Customer
 <a href="{{route('logout.index')}}">Logout</a> |
 <a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('home.Clist')}}">Customer List</a> |
+<a href="{{route('product.Elist')}}">Existing Product List</a> |
+<a href="{{route('product.Ulist')}}">Upcoming Product List</a> |
 
 <br><br>
 {{session('msg')}}

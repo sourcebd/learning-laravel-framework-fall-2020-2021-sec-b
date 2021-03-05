@@ -14,8 +14,8 @@
 @section('nav_bar')
 <br><br>
 <a href="{{route('logout.index')}}">Logout</a> |
-<a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('system.physicalStore')}}">Physical Store</a> |
+
 @endsection
 
     <h1>Sales Log</h1>
