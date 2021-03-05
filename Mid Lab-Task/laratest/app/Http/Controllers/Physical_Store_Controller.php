@@ -10,6 +10,11 @@ use Validator;
 use App\Http\Requests\PhysicalRequest;
 use Carbon\Carbon;
 
+use PDF;
+use App\Exports\ProductDownload;
+use App\Imports\ProductUpload;
+use Maatwebsite\Excel\Facades\Excel;
+
 class Physical_Store_Controller extends Controller
 {
     public function index( Request $req){
@@ -26,18 +31,54 @@ class Physical_Store_Controller extends Controller
         //         ->withName($name)
         //         ->withId($id);
 
-        return view('system.physicalStore', compact('id', 'name'));
+        return view('system.physicalCreate', compact('id', 'name'));
 
     }
 
-    public function saleslogCreate(){
 
-        return view('system.salesLog');
+/* PDF DOWNLOAD */
+
+    public function downloadPDF()
+    {
+        $data = Physical_store_channel::all();
+        view()->share('sales', $data);
+        $pdf = PDF::loadView('system.pdf', $data);
+        return $pdf->download('Product_Details.pdf');
 
     }
 
-    public function saleslogStore(PhysicalRequest $req){
+/*  */
 
+/* EXCELL IMPORT(UPLOAD)-EXPORT(DOWNLOAD) */
+
+    public function uploadExcelview()
+    {
+    return view('system.uploadExcelview');
+    }
+
+    public function upload(Request $req) 
+    {
+        Excel::import(new ProductUpload, request()->file('file'));
+        $req->session()->flash('msg', 'Excel uploaded into database successfully...check it out!');
+        return back();
+    }
+
+    public function downloadExcel() 
+    {
+        return Excel::download(new ProductDownload, 'products.xlsx');
+    }
+
+
+/*  */
+
+    public function physicalCreate(){
+
+        return view('system.physicalCreate');
+
+    }
+
+    public function physicalStore(PhysicalRequest $req){
+        
     $sales = new Physical_store_channel();
 
     $sales->customer_name = $req->customer_name;
@@ -54,10 +95,10 @@ class Physical_Store_Controller extends Controller
     $sales->save();
 
     $req->session()->flash('msg', 'Stored successfully...check it out!');
-    return redirect()->route('system.physicalStore');
+    return redirect()->route('system.physicalCreate');
     }
 
-    public function physicalStorelist(){
+    public function salesLogList(){
 
         $sevensoldlist = Physical_store_channel::where('date_sold', '>', Carbon::now()->subDays(7))
         ->orderBy('date_sold', 'DESC')
@@ -76,7 +117,7 @@ class Physical_Store_Controller extends Controller
         $Avg1 = Physical_store_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
         $Max1 = Physical_store_channel::all()->max('product_name');
 
-        return view('system.physicalStore')->with('list', $sevensoldlist)->with('sold', $thirtysoldlist)->with('seven',$sevenCount)->with('thirty',$thirtyCount)->with('avg',$Avg)->with('max',$Max)->with('avg1',$Avg1)->with('max1',$Max1);
+        return view('system.salesLog')->with('list', $sevensoldlist)->with('sold', $thirtysoldlist)->with('seven',$sevenCount)->with('thirty',$thirtyCount)->with('avg',$Avg)->with('max',$Max)->with('avg1',$Avg1)->with('max1',$Max1);
 
         /* $userlist = Customer::all();
         //$userlist = $this->getUserlist();

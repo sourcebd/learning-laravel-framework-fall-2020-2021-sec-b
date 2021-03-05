@@ -12,4 +12,20 @@ class Physical_store_channel extends Model
     const UPDATED_AT = 'updated_at';
 
     protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'customer_name',
+        'customer_address',
+        'phone',
+        'product_id',
+        'product_name',
+        'unit_price',
+        'quantity',
+        'total_price',
+        'date_sold',
+        'payment_type',
+        'status',
+        'updated at',
+    ];
+
 }

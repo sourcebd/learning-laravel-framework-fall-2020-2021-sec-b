@@ -1,25 +1,13 @@
-@extends('home.sales')
+<h1>Physical Store <br> {{ session('email') }} </h1>
 
-@section('nav_bar')
-<a href="{{route('logout.index')}}">Logout</a> |
-<a href="{{route('home.index')}}">Home</a> |
-<a href="{{route('system.physicalCreate')}}">Physical Store</a> |
-<a href="{{route('system.socialMedia')}}">Social Media</a> |
-<a href="{{route('system.ecommerce')}}">E-Commerce Web App</a> |
-@endsection
+    <br><br>
+    {{session('msg')}}
 
-@section('page_title')    
-<h1>Social Media <br> {{ session('email') }} </h1>
-@endsection
-
-
-@section('main_content')
     <center><h1>Sold Items of last 7 Days</h1></center>
+ 
+    <br><br>
 
-    No. of Products:&nbsp;&nbsp;
-    {{$seven}} <br><br>
-<center>
-    <table border="1">
+    <table border="1" style="width:100%">
 
         <tr>
             <td>Id</td>
@@ -39,10 +27,10 @@
 
         </tr>
 
-            @foreach ($list as $i)
+            @foreach ($sales as $i)
             <tr>
                 <td>{{$i['id']}}</td>
-                <td>{{$i['customer_name']}}</td>
+                <td>{{$i->customer_name}}</td>
                 <td>{{$i['customer_address']}}</td>
                 <td>{{$i['phone']}}</td>
                 <td>{{$i['product_id']}}</td>
@@ -55,12 +43,9 @@
                 <td>{{$i['status']}}</td>
                 <td>{{$i['created_at']}}</td>
                 <td>{{$i['updated_at']}}</td>
+                
             </tr>
             @endforeach     
     </table>
-</center>
-@endsection 
-
-@section('title')
-Home | Social Media
-@endsection
+    <br>
+Home | Physical Store

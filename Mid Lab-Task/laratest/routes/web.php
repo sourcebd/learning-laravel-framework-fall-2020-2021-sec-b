@@ -36,7 +36,7 @@ Route::group(['middleware'=> 'sess'], function(){
 
     // From Sales Section: Free to access
 
-    Route::get('/system/sales/physical_store', 'Physical_Store_Controller@physicalStorelist')->name('system.physicalStore');
+    Route::get('/system/sales/sales_log', 'Physical_Store_Controller@salesLoglist')->name('system.salesLog');
     Route::get('/system/sales/social_media', 'Physical_Store_Controller@socialMedialist')->name('system.socialMedia');
     Route::get('/system/sales/ecommerce', 'Physical_Store_Controller@ecommercelist')->name('system.ecommerce');
 
@@ -47,13 +47,13 @@ Route::group(['middleware'=> 'sess'], function(){
 
     // Admin Section: Restriction to access
 
-    Route::group(['middleware'=> 'admin'], function(){
+        Route::group(['middleware'=> 'admin'], function(){
 
-    Route::get('/home/create/customer', 'HomeController@Ccreate')->middleware('sess')->name('home.Ccreate');
-    Route::post('/home/create/customer', 'HomeController@Cstore');
+        Route::get('/home/create/customer', 'HomeController@Ccreate')->middleware('sess')->name('home.Ccreate');
+        Route::post('/home/create/customer', 'HomeController@Cstore');
 
-    Route::get('/home/delete/customer/{id}', 'HomeController@Cdelete')->name('home.Cdelete');
-    Route::post('/home/delete/customer/{id}', 'HomeController@Cdestroy');
+        Route::get('/home/delete/customer/{id}', 'HomeController@Cdelete')->name('home.Cdelete');
+        Route::post('/home/delete/customer/{id}', 'HomeController@Cdestroy');
 
     });
 
@@ -61,8 +61,14 @@ Route::group(['middleware'=> 'sess'], function(){
 
     Route::group(['middleware'=> 'sales'], function(){
 
-    Route::get('/system/sales/physical_store/sales_log', 'Physical_Store_Controller@saleslogCreate')->name('system.salescreate');
-    Route::post('/system/sales/physical_store/sales_log', 'Physical_Store_Controller@saleslogStore');
+        Route::get('/system/sales/physical_store', 'Physical_Store_Controller@physicalCreate')->name('system.physicalCreate');
+        Route::post('/system/sales/physical_store', 'Physical_Store_Controller@physicalStore');
+
+        Route::get('/downloadPDF', 'Physical_Store_Controller@downloadPDF')->name('downloadPDF');
+
+        Route::get('/downloadExcel', 'Physical_Store_Controller@downloadExcel')->name('downloadExcel');
+        Route::get('/uploadExcelview', 'Physical_Store_Controller@uploadExcelview');
+        Route::post('/uploadExcelview', 'Physical_Store_Controller@upload')->name('uploadExcel');
 
     });
 

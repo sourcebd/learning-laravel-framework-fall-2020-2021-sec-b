@@ -14,6 +14,7 @@
 	<a href="{{route('product.Elist')}}">Existing Product List</a> |
 	<a href="{{route('product.Ulist')}}">Upcoming Product List</a> |
     <a href="{{route('product.Pcreate')}}">Add Product</a> |
+	
 	<br><br>
 
     <form method="post">

@@ -1,95 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home | Sales Log</title>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-</head>
-<body>
-
 @extends('layout.nav_bar')
 
-@section('nav_bar')
-<br><br>
-<a href="{{route('logout.index')}}">Logout</a> |
-<a href="{{route('system.physicalStore')}}">Physical Store</a> |
-
+@section('title')
+Home | Sales Log
 @endsection
 
-    <h1>Sales Log</h1>
+@section('page_title')    
+<h1>Sales Log <br> {{ session('email') }} </h1>
+@endsection
 
-    <form method="post">
-    	@csrf
-		<fieldset>
-			<legend>Product Sell</legend>
-			<table>
-				<tr>
-					<td>Customer Name</td>
-					<td><input type="text" name="customer_name" value="{{old('customer_name')}}"></td>
-				</tr>
-				<tr>
-					<td>Customer Address</td>
-					<td><input type="text" name="customer_address" value="{{old('customer_address')}}"></td>
-				</tr>
-				<tr>
-					<td>Phone</td>
-					<td><input type="text" name="phone" value="{{old('phone')}}"></td>
-				</tr>
-				<tr>
-					<td>Product Name</td>
-					<td><input type="text" name="product_name" value="{{old('product_name')}}"></td>
-				</tr>
-				<tr>
-					<td>Product Id</td>
-					<td><input type="text" name="product_id" value="{{old('product_id')}}"></td>
-				</tr>
-				<tr>
-					<td>Unit Price</td>
-					<td><input type="text" name="unit_price" value="{{old('unit_price')}}"></td>
-				</tr>
-				<tr>
-					<td>Quantity</td>
-					<td><input type="text" name="quantity" value="{{old('quantity')}}"></td>
-				</tr>
-				<tr>
-					<td>Total Price</td>
-					<td><input type="text" name="total_price" value="{{old('total_price')}}"></td>
-				</tr>
-				<tr>
-					<td>Date Sold</td>
-					<td><input type="date" name="date_sold" value="{{old('date_sold')}}"></td>
-					<td></td>
-					<td><input type="submit" name="submit" value="Save"></td>
-				</tr>
-				<tr>
-					<td>Payment Type</td>
-					<td>
-						<select name='payment_type'>
-							<option value="Bkash"> BKASH </option>
-							<option value="Nogod"> NOGOD </option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>Status</td>
-					<td>
-						<select name='status'>
-							<option value="Sold"> SOLD </option>
-							<option value="Pending"> PENDING </option>
-						</select>
-					</td>
-				</tr>
-				
-			</table>
-		</fieldset>
-	</form>
+@section('nav_bar')
+<a href="{{route('logout.index')}}">Logout</a> |
+<a href="{{route('home.index')}}">Home</a> |
+<a href="{{route('system.salesLog')}}">View Sales Log</a> |
+<a href="{{route('system.physicalCreate')}}">Physical Store</a> |
+<a href="/downloadExcel">Download as Excel</a> |
+<a href="/uploadExcelview">Upload Excel File</a> |
+<a href="/downloadPDF">Download as PDF</a> |
+@endsection
 
-<br><br>
-	@foreach($errors->all() as $err)
-		{{$err}} <br>
-	@endforeach
+@section('main_content')
+    
+    <br><br>
+    {{session('msg')}}
 
-</body>
-</html>
+    <center><h1>Sold Items of last 7 Days</h1></center>
+
+    No. of Products:&nbsp;&nbsp;
+    {{$seven}} <br><br>
+
+    Average Unit Price:&nbsp;&nbsp;
+    {{$avg}} <br><br>
+
+    Product with Max number:&nbsp;&nbsp;
+    {{$max}} <br><br>
+
+    <center>
+    <table border="1">
+
+        <tr>
+            <td>Id</td>
+            <td>Customer Name</td>
+            <td>Address</td>
+            <td>Phone</td>
+            <td>Product Id</td>
+            <td>Product Name</td>
+            <td>Unit Price</td>
+            <td>Quantity</td>
+            <td>Total Price</td>
+            <td>Date Sold</td>
+            <td>Payment Type</td>
+            <td>Status</td>
+            <td>Created At</td>
+            <td>Updated At</td>
+
+        </tr>
+
+            @foreach ($list as $i)
+            <tr>
+                <td>{{$i['id']}}</td>
+                <td>{{$i->customer_name}}</td>
+                <td>{{$i['customer_address']}}</td>
+                <td>{{$i['phone']}}</td>
+                <td>{{$i['product_id']}}</td>
+                <td>{{$i['product_name']}}</td>
+                <td>{{$i['unit_price']}}</td>
+                <td>{{$i['quantity']}}</td>
+                <td>{{$i['total_price']}}</td>
+                <td>{{$i['date_sold']}}</td>
+                <td>{{$i['payment_type']}}</td>
+                <td>{{$i['status']}}</td>
+                <td>{{$i['created_at']}}</td>
+                <td>{{$i['updated_at']}}</td>
+                
+            </tr>
+            @endforeach     
+    </table>
+    </center>
+    <center><h1><h1>Sold Items of 1 Month</h1></h1></center>
+
+    No. of Products:&nbsp;&nbsp;
+    {{$thirty}} <br><br>
+
+    Average Unit Price:&nbsp;&nbsp;
+    {{$avg1}} <br><br>
+
+    Product with Max number:&nbsp;&nbsp;
+    {{$max1}} <br><br>
+
+    <center>
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td>Customer Name</td>
+            <td>Address</td>
+            <td>Phone</td>
+            <td>Product Id</td>
+            <td>Product Name</td>
+            <td>Unit Price</td>
+            <td>Quantity</td>
+            <td>Total Price</td>
+            <td>Date Sold</td>
+            <td>Payment Type</td>
+            <td>Status</td>
+            <td>Created At</td>
+            <td>Updated At</td>
+        </tr>
+        
+            @foreach ($sold as $i)
+            <tr>
+                <td>{{$i['id']}}</td>
+                <td>{{$i->customer_name}}</td>
+                <td>{{$i['customer_address']}}</td>
+                <td>{{$i['phone']}}</td>
+                <td>{{$i['product_id']}}</td>
+                <td>{{$i['product_name']}}</td>
+                <td>{{$i['unit_price']}}</td>
+                <td>{{$i['quantity']}}</td>
+                <td>{{$i['total_price']}}</td>
+                <td>{{$i['date_sold']}}</td>
+                <td>{{$i['payment_type']}}</td>
+                <td>{{$i['status']}}</td>
+                <td>{{$i['created_at']}}</td>
+                <td>{{$i['updated_at']}}</td>
+                
+            </tr>
+            @endforeach  
+    </table>
+    </center>
+
+@endsection 

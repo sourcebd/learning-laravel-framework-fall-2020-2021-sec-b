@@ -7,7 +7,7 @@ Home | Customer
 @section('page_title')
 
 <h1>Hey {{Session('user_type')}} Welcome Home! <br> {{ session('email') }} </h1>
-<br><br>
+<br>
 <a href="{{route('logout.index')}}">Logout</a> |
 <a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('home.Clist')}}">Customer List</a> |
