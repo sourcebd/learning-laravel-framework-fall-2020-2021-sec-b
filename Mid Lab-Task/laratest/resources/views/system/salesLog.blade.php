@@ -13,9 +13,11 @@ Home | Sales Log
 <a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('system.salesLog')}}">View Sales Log</a> |
 <a href="{{route('system.physicalCreate')}}">Physical Store</a> |
-<a href="/downloadExcel">Download as Excel</a> |
-<a href="/uploadExcelview">Upload Excel File</a> |
-<a href="/downloadPDF">Download as PDF</a> |
+<a href="{{route('downloadExcel')}}">Download as Excel</a> |
+<a href="{{route('uploadExcel')}}">Upload Excel File</a> |
+<a href="{{route('downloadPDF')}}">Download as PDF</a> |
+<a href="{{route('soldPDF')}}">Download as PDF for sold status</a> |
+<a href="{{route('pendingPDF')}}">Download as PDF for pending status</a> |
 @endsection
 
 @section('main_content')

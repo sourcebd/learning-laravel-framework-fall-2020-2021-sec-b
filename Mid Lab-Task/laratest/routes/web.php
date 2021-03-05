@@ -64,11 +64,16 @@ Route::group(['middleware'=> 'sess'], function(){
         Route::get('/system/sales/physical_store', 'Physical_Store_Controller@physicalCreate')->name('system.physicalCreate');
         Route::post('/system/sales/physical_store', 'Physical_Store_Controller@physicalStore');
 
-        Route::get('/downloadPDF', 'Physical_Store_Controller@downloadPDF')->name('downloadPDF');
+        Route::get('/system/sales/sales_log/sold', 'Physical_Store_Controller@soldStat')->name('system.sold');
+        Route::get('/system/sales/sales_log/pending', 'Physical_Store_Controller@pendingStat')->name('system.pending');
 
-        Route::get('/downloadExcel', 'Physical_Store_Controller@downloadExcel')->name('downloadExcel');
-        Route::get('/uploadExcelview', 'Physical_Store_Controller@uploadExcelview');
-        Route::post('/uploadExcelview', 'Physical_Store_Controller@upload')->name('uploadExcel');
+        Route::get('/system/sales/physical_store/download_sales-data_PDF', 'Physical_Store_Controller@downloadPDF')->name('downloadPDF');
+        Route::get('/system/sales/physical_store/download_sales-data_PDF/sold', 'Physical_Store_Controller@soldPDF')->name('soldPDF');
+        Route::get('/system/sales/physical_store/download_sales-data_PDF/pending', 'Physical_Store_Controller@pendingPDF')->name('pendingPDF');
+
+        Route::get('/system/sales/physical_store/download_sales-data', 'Physical_Store_Controller@downloadExcel')->name('downloadExcel');
+        Route::get('/system/sales/physical_store/upload_sales-data', 'Physical_Store_Controller@uploadExcelview');
+        Route::post('/system/sales/physical_store/upload_sales-data', 'Physical_Store_Controller@upload')->name('uploadExcel');
 
     });
 

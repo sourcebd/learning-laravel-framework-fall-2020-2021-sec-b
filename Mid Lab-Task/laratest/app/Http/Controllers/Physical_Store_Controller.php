@@ -47,6 +47,24 @@ class Physical_Store_Controller extends Controller
 
     }
 
+    public function soldPDF()
+    {
+        $data = Physical_store_channel::all();
+        view()->share('sales', $data);
+        $pdf = PDF::loadView('system.pdfsoldStatus', $data);
+        return $pdf->download('Sold_Product_Details.pdf');
+
+    }
+
+    public function pendingPDF()
+    {
+        $data = Physical_store_channel::all();
+        view()->share('sales', $data);
+        $pdf = PDF::loadView('system.pdfpendingStatus', $data);
+        return $pdf->download('Pending_Product_Details.pdf');
+
+    }
+
 /*  */
 
 /* EXCELL IMPORT(UPLOAD)-EXPORT(DOWNLOAD) */
@@ -96,6 +114,19 @@ class Physical_Store_Controller extends Controller
 
     $req->session()->flash('msg', 'Stored successfully...check it out!');
     return redirect()->route('system.physicalCreate');
+    }
+
+    public function soldStat()
+    {
+        $sold= Physical_store_channel::where('status','Sold')->get();
+        return view('system.pdfsoldStatus')->with('pending', $pending);
+    }
+
+
+    public function pendingStat()
+    {
+        $pending= Physical_store_channel::where('status','Pending')->get();
+        return view('system.pdfpendingStatus')->with('pending', $pending);
     }
 
     public function salesLogList(){
