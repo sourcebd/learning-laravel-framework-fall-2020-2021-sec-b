@@ -1,4 +1,4 @@
-@extends('home.sales')
+@extends('layout.main')
 
 @section('nav_bar')
 <a href="{{route('logout.index')}}">Logout</a> |

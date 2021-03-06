@@ -50,7 +50,7 @@ class Physical_Store_Controller extends Controller
 
     public function soldPDF()
     {
-        $data = Physical_store_channel::all();
+        $data = Physical_store_channel::where('status','=','Sold')->get();
         view()->share('sales', $data);
         $pdf = PDF::loadView('system.pdfsoldStatus', $data);
         return $pdf->download('Sold_Product_Details.pdf');
@@ -59,7 +59,7 @@ class Physical_Store_Controller extends Controller
 
     public function pendingPDF()
     {
-        $data = Physical_store_channel::all();
+        $data = Physical_store_channel::where('status','=','Pending')->get();
         view()->share('sales', $data);
         $pdf = PDF::loadView('system.pdfpendingStatus', $data);
         return $pdf->download('Pending_Product_Details.pdf');
@@ -120,7 +120,7 @@ class Physical_Store_Controller extends Controller
     public function soldStat()
     {
         $sold= Physical_store_channel::where('status','Sold')->get();
-        return view('system.pdfsoldStatus')->with('pending', $pending);
+        return view('system.pdfsoldStatus')->with('sold', $sold);
     }
 
 
@@ -133,23 +133,51 @@ class Physical_Store_Controller extends Controller
     public function salesLogList(){
 
         $sevensoldlist = Physical_store_channel::where('date_sold', '>', Carbon::now()->subDays(7))
+        ->where('status','Sold')
         ->orderBy('date_sold', 'DESC')
         ->get();
 
         $thirtysoldlist = Physical_store_channel::where('date_sold', '>', Carbon::now()->subDays(30))
+        ->where('status','Sold')
         ->orderBy('date_sold', 'DESC')
         ->get();
 
-        $sevenCount = count($sevensoldlist);
-        $thirtyCount = count($thirtysoldlist);
+        $sevenpendinglist = Physical_store_channel::where('date_sold', '>', Carbon::now()->subDays(7))
+        ->where('status','Pending')
+        ->orderBy('date_sold', 'DESC')
+        ->get();
 
-        $Avg = Physical_store_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(7))->average('unit_price');
-        $Max = Physical_store_channel::all()->max('product_name');
+        $thirtypendinglist = Physical_store_channel::where('date_sold', '>', Carbon::now()->subDays(30))
+        ->where('status','Pending')
+        ->orderBy('date_sold', 'DESC')
+        ->get();
 
-        $Avg1 = Physical_store_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
-        $Max1 = Physical_store_channel::all()->max('product_name');
+        $sevensoldCount = count($sevensoldlist);
+        $thirtysoldCount = count($thirtysoldlist);
+        $sevenpendingCount = count($sevenpendinglist);
+        $thirtypendingCount = count($thirtypendinglist);
 
-        return view('system.salesLog')->with('list', $sevensoldlist)->with('sold', $thirtysoldlist)->with('seven',$sevenCount)->with('thirty',$thirtyCount)->with('avg',$Avg)->with('max',$Max)->with('avg1',$Avg1)->with('max1',$Max1);
+        $AvgSold = Physical_store_channel::select('unit_price')->where('status','Sold')->where('date_sold', '>', Carbon::now()->subDays(7))->average('unit_price');
+        $MaxSold = Physical_store_channel::where('status','Sold')->min('product_name');
+
+        $AvgSold1 = Physical_store_channel::select('unit_price')->where('status','Sold')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
+        $MaxSold1 = Physical_store_channel::where('status','Sold')->min('product_name');
+
+        $AvgPending = Physical_store_channel::select('unit_price')->where('status','Pending')->where('date_sold', '>', Carbon::now()->subDays(7))->average('unit_price');
+        $MaxPending = Physical_store_channel::where('status','Pending')->min('product_name');
+
+        $AvgPending1 = Physical_store_channel::select('unit_price')->where('status','Pending')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
+        $MaxPending1 = Physical_store_channel::where('status','Pending')->min('product_name');
+
+        return view('system.salesLog')
+        ->with('sevensoldlist', $sevensoldlist)->with('thirtysoldlist', $thirtysoldlist)
+        ->with('sevensoldcount',$sevensoldCount)->with('thirtysoldcount',$thirtysoldCount)
+        ->with('sevenpendinglist', $sevenpendinglist)->with('thirtypendinglist', $thirtypendinglist)
+        ->with('sevenpendingcount',$sevenpendingCount)->with('thirtypendingcount',$thirtypendingCount)
+        ->with('avgsold',$AvgSold)->with('maxsold',$MaxSold)
+        ->with('avgsold1',$AvgSold1)->with('maxsold1',$MaxSold1)
+        ->with('avgpending',$AvgPending)->with('maxpending',$MaxPending)
+        ->with('avgpending1',$AvgPending1)->with('maxpending1',$MaxPending1);
 
         /* $userlist = Customer::all();
         //$userlist = $this->getUserlist();
@@ -159,45 +187,31 @@ class Physical_Store_Controller extends Controller
     public function socialMedialist(){
         
         $sevensoldlist = Social_media_channel::where('date_sold', '>', Carbon::now()->subDays(7))
-        ->orderBy('date_sold', 'DESC')
-        ->get();
-
-        $thirtysoldlist = Social_media_channel::where('date_sold', '>', Carbon::now()->subDays(30))
+        ->where('status','Sold')
         ->orderBy('date_sold', 'DESC')
         ->get();
 
         $sevenCount = count($sevensoldlist);
-        $thirtyCount = count($thirtysoldlist);
 
         $Avg = Social_media_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(7))->average('unit_price');
-        $Max = Social_media_channel::all()->max('product_name');
+        $Max = Social_media_channel::all()->min('product_name');
 
-        $Avg1 = Social_media_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
-        $Max1 = Social_media_channel::all()->max('product_name');
-
-        return view('system.socialMedia')->with('list', $sevensoldlist)->with('sold', $thirtysoldlist)->with('seven',$sevenCount)->with('thirty',$thirtyCount)->with('avg',$Avg)->with('max',$Max)->with('avg1',$Avg1)->with('max1',$Max1);
+        return view('system.socialMedia')->with('list', $sevensoldlist)->with('seven',$sevenCount)->with('avg',$Avg)->with('max',$Max);
     }
 
     public function ecommercelist(){
         
         $sevensoldlist = Ecommerce_channel::where('date_sold', '>', Carbon::now()->subDays(7))
-        ->orderBy('date_sold', 'DESC')
-        ->get();
-
-        $thirtysoldlist = Ecommerce_channel::where('date_sold', '>', Carbon::now()->subDays(30))
+        ->where('status','Sold')
         ->orderBy('date_sold', 'DESC')
         ->get();
 
         $sevenCount = count($sevensoldlist);
-        $thirtyCount = count($thirtysoldlist);
 
         $Avg = Ecommerce_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(7))->average('unit_price');
-        $Max = Ecommerce_channel::all()->max('product_name');
+        $Max = Ecommerce_channel::all()->min('product_name');
 
-        $Avg1 = Ecommerce_channel::select('unit_price')->where('date_sold', '>', Carbon::now()->subDays(30))->average('unit_price');
-        $Max1 = Ecommerce_channel::all()->max('product_name');
-
-        return view('system.ecommerce')->with('list', $sevensoldlist)->with('sold', $thirtysoldlist)->with('seven',$sevenCount)->with('thirty',$thirtyCount)->with('avg',$Avg)->with('max',$Max)->with('avg1',$Avg1)->with('max1',$Max1);
+        return view('system.ecommerce')->with('list', $sevensoldlist)->with('seven',$sevenCount)->with('avg',$Avg)->with('max',$Max);
     }
 
     /*public function getUserlist (){
