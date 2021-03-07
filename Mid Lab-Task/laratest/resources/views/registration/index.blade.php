@@ -9,16 +9,24 @@
 </head>
 <body>
 
-<h1>Client Management System</h1>
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
+<h1>Create New Account</h1>
 
 <a href="{{route('login.index')}}">Login</a>
-
-    <h1>Create New Account</h1>
+<br><br>
 
     <form method="post" enctype="multipart/form-data">
     	@csrf
 		<fieldset>
 			<legend>Registration</legend>
+		<center>
 			<table>
 				<tr>
 					<td>Username</td>
@@ -54,7 +62,7 @@
 				</tr>
 				<tr>
 					<td>User Type</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='user_type'>
 							<option value="Customer"> CUSTOMER </option>
 							<option value="Admin"> ADMIN </option>
@@ -67,25 +75,27 @@
 				<tr>
 					<td>Date Added</td>
 					<td><input type="date" name="date_added" value="{{old('date_added')}}"></td>
-					<td></td>
-					<td><input type="submit" name="submit" value="Register"></td>
 				</tr>
 				<tr>
 					<td>Upload Image </td>
-					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
+					<td><input type="file" name="myfile"  value="{{old('myfile')}}"></td>
 				</tr>
+				<td><input type="submit" class="btn" name="submit" value="Register"></td>
 			</table>
+		</center>
 		</fieldset>
 	</form>
 
-	<br><br>
+	<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
-	<br><br>
 
-	<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
-	Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
+	<div id="msg">
+    {{session('msg')}}
+	</div>
+
+	@extends('layout.footer')
 	
 </body>
 </html>

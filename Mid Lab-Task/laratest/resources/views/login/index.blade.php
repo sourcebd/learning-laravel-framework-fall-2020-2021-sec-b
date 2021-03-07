@@ -6,12 +6,18 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <body>
 
-<h1>Client Management System</h1>
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
+<h1>Login</h1>
 
 <a href="{{route('Creg.index')}}">Customer Registration</a>
-
-
-	<h1>Login</h1>
+<br><br>
 
 	<form method="post">
         {{-- @csrf --}}
@@ -20,6 +26,7 @@
 
 		<fieldset>
 			<legend>Login</legend>
+	<center>
 			<table>
 				<tr>
 					<td>Email</td>
@@ -30,22 +37,24 @@
 					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" name="submit" value="Submit"></td>
+					<td><input type="submit" class="btn" name="submit" value="Submit"></td>
 					<td></td>
 				</tr>
 			</table>
+	</center>
 		</fieldset>
 	</form>
 
-	<br><br>
+	<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
-    {{session('msg')}}
-	<br><br>
 
-	<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
-	Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
+    <div id="msg">
+    {{session('msg')}}
+	</div>
+
+	@extends('layout.footer')
 
 </body>
 </html>

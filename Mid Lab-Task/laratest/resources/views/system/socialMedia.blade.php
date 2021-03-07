@@ -19,7 +19,7 @@
     No. of Products:&nbsp;&nbsp;
     {{$seven}} <br><br>
 <center>
-    <table border="1">
+    <table border="1" style="text-align:center">
 
         <tr>
             <td>Id</td>

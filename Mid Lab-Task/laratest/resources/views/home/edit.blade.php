@@ -8,6 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Edit Customer, {{ $user['id'] }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('home.index')}}">Home</a> |
@@ -18,6 +27,7 @@
     	@csrf
 		<fieldset>
 			<legend>Edit</legend>
+	<center>
 			<table>
 				<tr>
 					<td>Username</td>
@@ -33,7 +43,7 @@
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" name="email" value="{{ $user['email'] }}"></td>
+					<td><input type="text" name="email" value="{{ $user['email'] }}" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>Country</td>
@@ -53,8 +63,7 @@
 				</tr>
 				<tr>
 					<td>User Type</td>
-					<td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 					<select name='user_type'>
 							<option value="Customer" @if($user['user_type'] == 'Customer') selected @endif > CUSTOMER </option>
 							<option value="Admin"  @if($user['user_type'] == 'Admin') selected @endif > ADMIN </option>
@@ -63,23 +72,21 @@
 							<option value="Vendor" @if($user['user_type'] == 'Vendor') selected @endif > VENDOR </option>
 						</select>
 					</td>
-					</td>
 				</tr>
 				<tr>
 					<td>Date Added</td>
 					<td><input type="date" name="date_added" value="{{$user['date_added']}}"></td>
-					<td></td>
-					<td><input type="submit" name="submit" value="Update"></td>
 				</tr>
+				<td><input type="submit" class="btn" name="submit" value="Update"></td>
 			</table>
+	</center>
 		</fieldset>
 	</form>
 
-	<br><br>
+	<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
-	<br><br>
 
 	@extends('layout.footer')
 

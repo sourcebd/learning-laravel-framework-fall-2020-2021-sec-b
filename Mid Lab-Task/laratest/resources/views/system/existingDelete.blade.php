@@ -8,6 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Delete Existing Product, {{ $existing['product_name'] }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('system.product')}}">Product-Management</a> |
@@ -16,7 +25,8 @@
 	<a href="{{route('product.Pcreate')}}">Add Product</a> |
 	<br><br>
 
-			<table style="width:20%">
+	<center>
+		<table width=30% style="min-height:45vh; margin-left:10%">
 				<tr>
 					<td>Product Name</td>
 					<td>{{ $existing['product_name'] }}</td>
@@ -33,17 +43,17 @@
 					<td>Status</td>
 					<td>{{ $existing['status'] }}</td>
 				</tr>
+				<tr><td><br></td></tr>
 				<tr>
 					<td>
 						<form method="post">
 							@csrf
-							<input type="submit" name="submit" value="Confirm">
+							<input type="submit" class="btn" name="submit" value="Confirm">
 						</form>
 					</td>
-					<td></td>
 				</tr>
 			</table>
-
+	</center>
 			@extends('layout.footer')
 </body>
 </html>

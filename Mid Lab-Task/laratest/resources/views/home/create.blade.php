@@ -9,6 +9,14 @@
 </head>
 <body>
 
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Create New Customer</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('home.index')}}">Home</a> |
@@ -18,6 +26,7 @@
     	@csrf
 		<fieldset>
 			<legend>Add</legend>
+	<center>
 			<table>
 				<tr>
 					<td>Username</td>
@@ -53,7 +62,7 @@
 				</tr>
 				<tr>
 					<td>User Type</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='user_type'>
 							<option value="Customer"> CUSTOMER </option>
 							<option value="Admin"> ADMIN </option>
@@ -66,24 +75,25 @@
 				<tr>
 					<td>Date Added</td>
 					<td><input type="date" name="date_added" value="{{old('date_added')}}"></td>
-					<td></td>
-					<td><input type="submit" name="submit" value="Save"></td>
 				</tr>
 				<tr>
 					<td>Upload Image </td>
-					<td><input type="file" name="myfile" value="{{old('myfile')}}"></td>
+					<td><input type="file"  name="myfile" value="{{old('myfile')}}"></td>
 				</tr>
+				<td><input type="submit" class="btn" name="submit" value="Save"></td>
 			</table>
+	</center>
 		</fieldset>
 	</form>
 
-<br><br>
-	@extends('layout.footer')
-
+<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
-<br><br>
+
+    {{session('msg')}}
+
+	@extends('layout.footer')
 
 </body>
 </html>

@@ -1,4 +1,8 @@
+<head>
+	<link rel="stylesheet" href="{{asset('style.css')}}">
+</head>
+
 <div id="footer"><br>
-		<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
+		<h3>Copyright @ 2021 | ClientManagement.com</h3>
 		Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
 </div>

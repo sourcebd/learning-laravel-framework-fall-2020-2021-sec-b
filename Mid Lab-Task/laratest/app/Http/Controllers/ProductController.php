@@ -85,7 +85,6 @@ class ProductController extends Controller
         return view('system.existingList')->with('list', $existinglist);
     }
 
-
     public function Edelete($id){
 
         $existing = Product::find($id);

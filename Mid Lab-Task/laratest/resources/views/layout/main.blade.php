@@ -6,6 +6,14 @@
 </head>
 <body>
 
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
 	<div id="page_title">
 		@yield('page_title')
 	</div>
@@ -20,10 +28,7 @@
 			@yield('main_content')
 	</div>
 
-	<div id="footer"><br>
-		<h3 style="margin:0%">Copyright @ 2021 | ClientManagement.com</h3>
-		Powered by <a href="https://sourcebd.github.io/nafi.com/">nafi.com</a>
-	</div>
+	@extends('layout.footer')
 
 </body>
 </html>

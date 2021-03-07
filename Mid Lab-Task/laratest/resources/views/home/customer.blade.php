@@ -7,7 +7,6 @@ Home | Customer
 @section('page_title')
 
 <h1>Hey {{Session('user_type')}} Welcome Home! <br> {{ session('email') }} </h1>
-<br>
 <a href="{{route('logout.index')}}">Logout</a> |
 <a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('home.Clist')}}">Customer List</a> |
@@ -15,7 +14,10 @@ Home | Customer
 <a href="{{route('product.Ulist')}}">Upcoming Product List</a> |
 
 <br><br>
-{{session('msg')}}
+
+<div id="msg">
+    {{session('msg')}}
+</div>
 
 
 @endSection

@@ -21,7 +21,7 @@ class VendorCheck
         }
         else
         {
-            $request->session()->flash('msg','Invalid req ... You do not have privilege to be an Vendor!');
+            $request->session()->flash('msg','Invalid req ... You do not have privilege to be a Vendor!');
             return redirect('/home');
         }
     }

@@ -13,7 +13,7 @@ Home | Sales Log
 <a href="{{route('home.index')}}">Home</a> |
 <a href="{{route('system.salesLog')}}">View Sales Log</a> |
 <a href="{{route('system.physicalCreate')}}">Physical Store</a> |
-<a href="{{route('downloadExcel')}}">Download Excel for full chart</a> |
+<a href="{{route('downloadExcel')}}">Download Excel full chart</a> |
 <a href="{{route('uploadExcel')}}">Upload Excel</a> |
 <a href="{{route('downloadPDF')}}">Download PDF for full chart</a> |
 <a href="{{route('soldPDF')}}">Download PDF for sold status</a> |
@@ -21,9 +21,6 @@ Home | Sales Log
 @endsection
 
 @section('main_content')
-    
-    <br><br>
-    {{session('msg')}}
 
     <center><h1>Sold Items of last 7 Days</h1></center>
 
@@ -37,7 +34,7 @@ Home | Sales Log
     {{$maxsold}} <br><br>
 
     <center>
-    <table border="1">
+    <table border="1" style="text-align:center">
 
         <tr>
             <td>Id</td>
@@ -90,7 +87,7 @@ Home | Sales Log
     {{$maxsold1}} <br><br>
 
     <center>
-    <table border="1">
+    <table border="1" style="text-align:center">
         <tr>
             <td>Id</td>
             <td>Customer Name</td>
@@ -142,7 +139,7 @@ Home | Sales Log
     {{$maxpending}} <br><br>
 
     <center>
-    <table border="1">
+    <table border="1" style="text-align:center">
 
         <tr>
             <td>Id</td>
@@ -195,7 +192,7 @@ Home | Sales Log
     {{$maxpending1}} <br><br>
 
     <center>
-    <table border="1">
+    <table border="1" style="text-align:center">
         <tr>
             <td>Id</td>
             <td>Customer Name</td>

@@ -8,16 +8,28 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Delete Customer, {{ $user['id'] }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('home.index')}}">Home</a> |
 	<a href="{{route('home.Clist')}}">Customer List</a> |
 	<br><br>
-
-			<table>
+	<center>
+			<table width=30% style="min-height:95vh; margin-left:10%">
+				<td colspan="2">
+					<img src="{{asset('/upload')}}/{{$user['profile_img']}}" height="100px" width="100px">
+				</td>
 				<tr>
 					<td>Name: </td>
-					<td>{{$user['name']}}</td>
+					<td>{{$user['full_name']}}</td>
 				</tr>
 				<tr>
 					<td>Username</td>
@@ -66,13 +78,12 @@
 					<td>
 						<form method="post">
 							@csrf
-							<input type="submit" name="submit" value="Confirm">
+							<input type="submit" class="btn" name="submit" value="Confirm">
 						</form>
 					</td>
-					<td></td>
 				</tr>
 			</table>
-
+	</center>
 			@extends('layout.footer')
 </body>
 </html>

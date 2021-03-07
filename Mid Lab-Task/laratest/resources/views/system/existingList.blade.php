@@ -17,12 +17,14 @@
 @section('main_content')
 
 <br>
-{{session('msg')}}
-<br><br>
+<div id="msg">
+    {{session('msg')}}
+</div>
+<br>
 
     <center><h1>Existing Product List</h1></center>
     
-
+<center>
     <table border="1" style="text-align:center">
 
         <tr>
@@ -48,7 +50,7 @@
             </tr>
             @endforeach     
     </table>
-
+</center>
 @endsection 
 
 @section('title')

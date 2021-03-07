@@ -7,7 +7,7 @@ Home | Customer List
 
 
 @section('page_title')
-<h1>Customer list</h1>
+<h1>Customer List</h1>
 @endsection
 
 
@@ -19,13 +19,15 @@ Home | Customer List
 
 
 @section('main_content')
+
+<center>
     <table border="1">
         <tr>
-            <td>ID</td>
-            <td>USERNAME</td>
-            <td>PASSWORD</td>
-            <td>TYPE</td>
-            <td>Action</td>
+            <td>Id</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Type</td>
+            <td>ACTION</td>
         </tr>
 
         @for($i=0; $i < count($list); $i++)
@@ -42,4 +44,12 @@ Home | Customer List
         </tr>
         @endfor
     </table>
+</center>  
+
+<br>
+
+<div id="msg">
+    {{session('msg')}}
+</div>
+
 @endsection

@@ -23,6 +23,9 @@ Home | Physical Store
     	@csrf
 		<fieldset>
 			<legend>Product Sell</legend>
+
+<center>
+
 			<table>
 				<tr>
 					<td>Customer Name</td>
@@ -60,11 +63,10 @@ Home | Physical Store
 					<td>Date Sold</td>
 					<td><input type="date" name="date_sold" value="{{old('date_sold')}}"></td>
 					<td></td>
-					<td><input type="submit" name="submit" value="Save"></td>
 				</tr>
 				<tr>
 					<td>Payment Type</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='payment_type'>
 							<option value="Bkash"> BKASH </option>
 							<option value="Nogod"> NOGOD </option>
@@ -73,26 +75,28 @@ Home | Physical Store
 				</tr>
 				<tr>
 					<td>Status</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='status'>
 							<option value="Sold"> SOLD </option>
 							<option value="Pending"> PENDING </option>
 						</select>
 					</td>
 				</tr>
-				
+				<tr><td><br></td></tr>
+				<td><input type="submit" class="btn" name="submit" value="Save"></td>
 			</table>
+</center>
 		</fieldset>
 	</form>
 
-<br><br>
+<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
 
-	{{session('msg')}}
+	<div id="msg">
+    {{session('msg')}}
+    </div>
+
 
 @endsection
-
-</body>
-</html>

@@ -8,6 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Edit Upcoming Product, {{ $upcoming['product_name'] }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('system.product')}}">Product-Management</a> |
@@ -20,6 +29,7 @@
     	@csrf
 		<fieldset>
 			<legend>Edit</legend>
+		<center>
 			<table>
 				<tr>
 					<td>Product Name</td>
@@ -27,8 +37,7 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 					<select name='category'>
 							<option value="Grocery" @if($upcoming['category'] == 'Grocery') selected @endif > GROCERY </option>
 							<option value="Medical"  @if($upcoming['category'] == 'Medical') selected @endif > MEDICAL </option>
@@ -43,21 +52,20 @@
 				</tr>
 				<tr>
 					<td>Status</td>
-					<td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 					<select name='status'>
 							<option value="Existing" @if($upcoming['status'] == 'Existing') selected @endif > EXISTING </option>
 							<option value="Upcoming"  @if($upcoming['status'] == 'Upcoming') selected @endif > UPCOMING </option>
 					</select>
 					</td>
-					</td>
 				</tr>
-				<td><input type="submit" name="submit" value="Update Product"></td>
+				<td><input type="submit" class="btn" name="submit" value="Update Product"></td>
 			</table>
+	</center>
 		</fieldset>
 	</form>
 	
-	<br><br>
+	<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach

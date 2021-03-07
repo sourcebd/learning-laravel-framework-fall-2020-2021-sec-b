@@ -8,6 +8,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
 <h1>Add Product <br> {{ session('email') }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('system.product')}}">Product-Management</a> |
@@ -21,6 +30,7 @@
     	@csrf
 		<fieldset>
 			<legend>Add</legend>
+	<center>
 			<table>
 				<tr>
 					<td>Product Name</td>
@@ -28,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='category'>
 							<option value="Grocery"> GROCERY </option>
 							<option value="Medical"> MEDICAL </option>
@@ -42,24 +52,28 @@
 				</tr>
 				<tr>
 					<td>Status</td>
-					<td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;
 						<select name='status'>
 							<option value="Existing"> EXISTING </option>
 							<option value="Upcoming"> UPCOMING </option>
 						</select>
 					</td>
 				</tr>	
-                <td><input type="submit" name="submit" value="Add Product"></td>
+				<tr><td><br></td></tr>
+                <td><input type="submit" name="submit" class="btn" value="Add Product"></td>
 			</table>
+	</center>	
 		</fieldset>
 	</form>
 
-<br><br>
+	<br>
 	@foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach
-{{session('msg')}}
-<br><br>
+	
+	<div id="msg">
+    {{session('msg')}}
+    </div>
 
 	@extends('layout.footer')
 

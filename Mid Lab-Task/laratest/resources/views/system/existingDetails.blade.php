@@ -8,6 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
+
+<div class="title">
+ 	<div class="align">
+    	<div class="sign">
+      		<span class="fast-flicker">Client&nbsp;&nbsp;</span>Management&nbsp;&nbsp;<span class="flicker">System</span>
+    	</div>
+	</div>
+</div>
+
     <h1>Existing Product Details, {{ $existing['product_name'] }}</h1>
 	<a href="{{route('logout.index')}}">Logout</a> |
 	<a href="{{route('system.product')}}">Product-Management</a> |
@@ -15,8 +24,8 @@
 	<a href="{{route('product.Ulist')}}">Upcoming Product List</a> |
 	<a href="{{route('product.Pcreate')}}">Add Product</a> |
 	<br><br>
-
-			<table style="width:20%">
+	<center>
+		<table width=30% style="min-height:25vh; margin-left:10%">
 				<tr>
 					<td>Product Name</td>
 					<td>{{ $existing['product_name'] }}</td>
@@ -34,7 +43,7 @@
 					<td>{{ $existing['status'] }}</td>
 				</tr>
 			</table>
-
+	</center>
 			@extends('layout.footer')
 </body>
 </html>

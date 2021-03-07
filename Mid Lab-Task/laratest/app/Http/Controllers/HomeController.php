@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Customer;
 use Validator;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdateRequest;
 
 class HomeController extends Controller
 {
@@ -115,6 +116,7 @@ class HomeController extends Controller
             $user->profile_img = $filename;
 
             $user->save();
+            $req->session()->flash('msg', 'Customer is created successfully...');
             return redirect()->route('home.Clist');
         }
     }
@@ -126,7 +128,7 @@ class HomeController extends Controller
     }
 
 
-    public function Cupdate($id, UserRequest $req){
+    public function Cupdate($id, UpdateRequest $req){
 
         $user = Customer::find($id);
         
@@ -142,7 +144,7 @@ class HomeController extends Controller
             $user->date_added = $req->date_added;
             $user->save();
 
-
+        $req->session()->flash('msg', 'Customer is updated successfully...');
         return redirect()->route('home.Clist');
     }
 
@@ -168,9 +170,10 @@ class HomeController extends Controller
         return view('home.delete')->with('user', $user);
     }
 
-    public function Cdestroy($id){
+    public function Cdestroy($id, Request $req){
 
         if(Customer::destroy($id)){
+            $req->session()->flash('msg', 'Customer is deleted successfully...');
             return redirect()->route('home.Clist');
         }else{
             return redirect('/home/delete/customer/'.$id);

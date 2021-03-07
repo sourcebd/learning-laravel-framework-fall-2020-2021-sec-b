@@ -9,6 +9,7 @@
 @endsection
 
 @section('nav_bar')
+<a href="{{route('logout.index')}}">Logout</a> |
 <a href="{{route('system.salesLog')}}">View Sales Log</a> |
     <br>
 @endsection
@@ -17,16 +18,12 @@
     <center>
 
     <br>
-        <h1>Upload Excel</h1>
-        <br>
-        <br>
-        <br>
         <form action="" method="POST" enctype= "multipart/form-data">
             @csrf
             <input type="file" name='file'>
-            <input type="submit" value="Submit">
+            <div><input type="submit" class="uploadbtn" value="Submit"></div>
         </form>
-        <br>
+    <br>
         @foreach($errors->all() as $err)
 		{{$err}} <br>
 	@endforeach

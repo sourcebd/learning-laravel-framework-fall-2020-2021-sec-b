@@ -1,13 +1,28 @@
-<h1>Physical Store <br> {{ session('email') }} </h1>
+<div style="background-color:rgba(205, 217, 224, 0.808);">
+
+<h1 style="color: green">Sales Log <br> {{ session('email') }} </h1>
 
     <br><br>
     {{session('msg')}}
 
-    <center><h1>Pending Items of last 7 Days</h1></center>
+    <center>
+        <div style="color: red;
+                    font-size:30px;
+                    font-family: Arial, Helvetica, sans-serif;">ClientManagement.com
+        </div>
+        <h2 style="font-family: Arial, Helvetica, sans-serif;">Pending Items of last 7 Days</h2>
+    </center>
  
     <br><br>
 
-    <table border="1" style="width:100%">
+<div style="
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:10px;
+	border: 2px solid white;
+	background-color: white;">
+
+    <table width=100% border="1" style="text-align:center">
 
         <tr>
             <td>Id</td>
@@ -47,5 +62,12 @@
             </tr>
             @endforeach     
     </table>
-    <br>
-Home | Physical Store
+</div>
+
+<div style="font-family: Arial, Helvetica, sans-serif; margin-left: 620px">
+<h3 style="margin:0%"><br>Regards,<br> 
+{{session('username')}}</h3>
+</div>
+
+<h3 style="color: darkblue; text-align: center"> Home | Sales Log </h3>
+</div>
