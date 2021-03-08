@@ -91,9 +91,7 @@
 		{{$err}} <br>
 	@endforeach
 
-	<div id="msg">
     {{session('msg')}}
-	</div>
 
 	@extends('layout.footer')
 	

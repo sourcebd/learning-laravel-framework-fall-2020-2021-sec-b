@@ -18,10 +18,7 @@ Home | Sales
 
 <br><br>
 
-<div id="msg">
     {{session('msg')}}
-</div>
-
 
 @endSection
 

@@ -13,8 +13,7 @@ Home | Product-Management
 <a href="{{route('product.Ulist')}}">Upcoming Product List</a> |
 <a href="{{route('product.Pcreate')}}">Add Product</a> |
 <br><br>
-<div id="msg">
+
     {{session('msg')}}
-</div>
 
 @endSection

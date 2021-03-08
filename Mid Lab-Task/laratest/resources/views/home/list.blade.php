@@ -48,8 +48,6 @@ Home | Customer List
 
 <br>
 
-<div id="msg">
     {{session('msg')}}
-</div>
 
 @endsection

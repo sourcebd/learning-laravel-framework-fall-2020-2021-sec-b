@@ -30,14 +30,14 @@
 			<table>
 				<tr>
 					<td>Email</td>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" name="email" value="{{old('email')}}"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" value="{{old('password')}}"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" class="btn" name="submit" value="Submit"></td>
+					<td><input type="submit" class="btn" name="submit" value="Submit" ></td>
 					<td></td>
 				</tr>
 			</table>
@@ -50,9 +50,7 @@
 		{{$err}} <br>
 	@endforeach
 
-    <div id="msg">
     {{session('msg')}}
-	</div>
 
 	@extends('layout.footer')
 
