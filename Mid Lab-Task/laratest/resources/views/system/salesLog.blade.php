@@ -15,7 +15,7 @@ Home | Sales Log
 <a href="{{route('system.physicalCreate')}}">Physical Store</a> |
 <a href="{{route('downloadExcel')}}">Download Excel full chart</a> |
 <a href="{{route('uploadExcel')}}">Upload Excel</a> |
-<a href="{{route('downloadPDF')}}">Download PDF for full chart</a> |
+<a href="{{route('downloadPDF')}}">Download PDF full chart</a> |
 <a href="{{route('soldPDF')}}">Download PDF for sold status</a> |
 <a href="{{route('pendingPDF')}}">Download PDF for pending status</a> |
 @endsection
