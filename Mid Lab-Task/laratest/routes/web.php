@@ -87,14 +87,14 @@ Route::group(['middleware'=> 'sess'], function(){
         Route::post('/system/product_management/edit/existing_products/{id}','ProductController@Eupdate');
         Route::get('/system/product_management/delete/existing_products/{id}','ProductController@Edelete')->name('product.Edelete');
         Route::post('/system/product_management/delete/existing_products/{id}','ProductController@Edestroy');
-        Route::get('/system/product_management/details/existing_products/{id}','ProductController@Eshow')->name('product.Eshow');
+        Route::get('/system/product_management/details/existing_products/{id}/product_name/{example}','ProductController@Eshow')->name('product.Eshow');
     
         
         Route::get('/system/product_management/edit/upcoming_products/{id}','ProductController@Uedit')->name('product.Uedit');
         Route::post('/system/product_management/edit/upcoming_products/{id}','ProductController@Uupdate');
         Route::get('/system/product_management/delete/upcoming_products/{id}','ProductController@Udelete')->name('product.Udelete');
         Route::post('/system/product_management/delete/upcoming_products/{id}','ProductController@Udestroy');
-        Route::get('/system/product_management/details/upcoming_products/{id}','ProductController@Ushow')->name('product.Ushow');
+        Route::get('/system/product_management/details/upcoming_products/{id}/product_name/{example}','ProductController@Ushow')->name('product.Ushow');
     
         Route::get('/system/product_management/add_product','ProductController@Pcreate')->name('product.Pcreate');
         Route::post('/system/product_management/add_product','ProductController@Pstore');

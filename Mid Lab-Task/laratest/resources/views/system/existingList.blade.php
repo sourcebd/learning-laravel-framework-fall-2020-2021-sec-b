@@ -43,7 +43,7 @@
                 <td>{{$i['status']}}</td>
                 <td><a href="{{route('product.Eedit', [$i['id']])}}">Edit</a>
                     <a href="{{route('product.Edelete', [$i['id']])}}">Delete</a>
-                    <a href="{{route('product.Eshow', [$i['id']])}}">Details</a>
+                    <a href="{{route('product.Eshow', [ $i->id, $i->product_name])}}">Details</a>
                 </td>
             </tr>
             @endforeach     

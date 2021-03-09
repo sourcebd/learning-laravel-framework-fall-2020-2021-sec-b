@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Vendor;
 use Validator;
 use App\Http\Requests\ProductRequest;
 use Carbon\Carbon;
@@ -50,9 +51,11 @@ class ProductController extends Controller
     }
 
 
-    public function Eshow($id){
+    public function Eshow($id, $product_name){
 
-        $existing = Product::find($id);
+        $existing = Product::find($id)
+        ->where('product_name', $product_name)
+        ->first();  /* here get() or nothing given both won't work, because we it can't recognize from which id product_name is being fetched*/
         //print_r($user);
         return view('system.existingDetails')->with('existing', $existing);
     }
@@ -81,8 +84,9 @@ class ProductController extends Controller
     public function Elist(){
         
         $existinglist = Product::where('status','existing')
-        ->get();
-        return view('system.existingList')->with('list', $existinglist);
+        ->get(); /* here first() won't work, because we it can't recognize from all members of existing status have been called */
+
+        return view('system.existingList')->with('list',$existinglist);
     }
 
     public function Edelete($id){
@@ -106,9 +110,11 @@ class ProductController extends Controller
 
 //Upcoming Details
 
-public function Ushow($id){
+public function Ushow($id, $product_name){
 
-    $upcoming = Product::find($id);
+    $upcoming = Product::find($id)
+    ->where('product_name', $product_name)
+    ->first();
     //print_r($user);
     return view('system.upcomingDetails')->with('upcoming', $upcoming);
 }
